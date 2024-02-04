@@ -32,7 +32,7 @@ export default function Home() {
 
   function onPress() {
     if (!won) {
-      setValue((r) => r += 1);
+      setValue((r) => r += 0.05);
       const randomIndex = Math.floor(Math.random() * longAhead.length);
 
       if (value < 50) {
@@ -64,7 +64,7 @@ export default function Home() {
 
       <div className={styles.center}>
         <label for="slider" className={styles.label}><h3>{cheers}</h3></label>
-        <input id="slider" name="slider" type="range" value={value} max={100} step={1} />
+        <input id="slider" name="slider" type="range" value={value} max={100} step={0.05} />
       </div>
 
       <div className={styles.grid}>
