@@ -16,8 +16,8 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 });
 
-server.listen(8081, () => {
-  console.log('listening on *:8081');
+server.listen(8089, () => {
+  console.log('listening on *:8089');
 });
 
 
