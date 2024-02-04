@@ -1,7 +1,8 @@
 "use client"
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
-import { socket } from "@/lib/socket";
+import { doc, onSnapshot } from "firebase/firestore";
+import { resetRace } from "@/lib/Fire";
 
 export default function Home() {
   const [value, setValue] = useState(0);
@@ -30,16 +31,16 @@ export default function Home() {
   ]
 
 
-  function onPress() {
+  function onPedal(progress) {
     if (!won) {
-      setValue((r) => r += 0.05);
+      setValue(progress);
       const randomIndex = Math.floor(Math.random() * longAhead.length);
 
-      if (value < 50) {
+      if (progress < 50) {
         setCheers(longAhead[randomIndex])
-      } else if (value >= 50 && value < 100) {
+      } else if (progress >= 50 && progress < 100) {
         setCheers(approaching[randomIndex])
-      } else if (value >= 100) {
+      } else if (progress >= 100) {
         setWon(true);
         setCheers(winner[randomIndex]);
       }
@@ -47,7 +48,15 @@ export default function Home() {
 
   }
   useEffect(() => {
-    socket.on('story', onPress);
+    // socket.on('story', onPedal);
+    resetRace();
+    onSnapshot(doc(db, "race", "35yhqB8r6hVWolLMCu4P"), (doc) => {
+      const rec = doc.data();
+      const reci = parseInt(rec.p1);
+      if (reci > 0) {
+        onPedal(reci)
+      }
+    });
 
     return () => {
       // socket.off('story', clean);
