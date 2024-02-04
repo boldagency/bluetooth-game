@@ -1,8 +1,9 @@
 "use client"
 import { useEffect, useState } from "react";
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db, resetRace } from "@/lib/Fire";
+
 
 export default function Home() {
   const [value, setValue] = useState(0);
@@ -41,7 +42,7 @@ export default function Home() {
       } else if (progress >= 50 && progress < 100) {
         setCheers(approaching[randomIndex])
       } else if (progress >= 100) {
-        setWon(true);
+       
         setCheers(winner[randomIndex]);
       }
     }
@@ -50,18 +51,22 @@ export default function Home() {
   useEffect(() => {
     // socket.on('story', onPedal);
     resetRace();
-    onSnapshot(doc(db, "race", "35yhqB8r6hVWolLMCu4P"), (doc) => {
+    onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
       const rec = doc.data();
-      const reci = parseInt(rec.p1);
-      if (reci > 0) {
-        onPedal(reci)
+      console.log("PEDAL",rec)
+
+      const rec1 = parseInt(rec.p1);
+      const rec2 = parseInt(rec.p2);
+      if (rec1>=100 || rec2 >=100) setWon(true);
+      else {
+        onPedal(rec2)
       }
     });
 
     return () => {
       // socket.off('story', clean);
     };
-  })
+  },[])
   return (
     <main className={styles.main}>
       <div className={styles.description}>

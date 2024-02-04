@@ -109,7 +109,8 @@ a {
 
 
 label {
-  /* position: absolute; */
+  position: absolute;
+  top: -70%;
   border-radius: 5px;
   padding: 12px;
   font-family: Roboto, 'Helvetica Neue', Arial;

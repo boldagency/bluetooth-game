@@ -54,12 +54,12 @@ app.post("/set-players", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
         let data = req.body;
-        const oldval = await (await race.get()).docs[0].ref.get();
-        if (data.p1) {
+        const oldval = (await (await race.get()).docs[0].ref.get()).data();
+        if (data.p1 && oldval.p1<100) {
             await (await race.get()).docs[0].ref.update('p1', oldval.p1+ 0.5);
             return res.status(200).send("p1 updated");
         }
-        if (data.p2) {
+        if (data.p2 && oldval.p2<100) {
             await (await race.get()).docs[0].ref.update('p2', oldval.p2+ 0.5);
             return res.status(200).send("p2 updated");
         }
