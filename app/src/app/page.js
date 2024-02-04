@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import { doc, onSnapshot } from "firebase/firestore";
-import { resetRace } from "@/lib/Fire";
+import { db, resetRace } from "@/lib/Fire";
 
 export default function Home() {
   const [value, setValue] = useState(0);
