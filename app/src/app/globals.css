@@ -18,7 +18,7 @@
     transparent 360deg
   );
   --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
+    rgb(69, 2, 128),
     rgba(255, 255, 255, 0)
   );
 
@@ -109,21 +109,13 @@ a {
 
 
 label {
-  background: #eee;
-  position: absolute;
+  /* position: absolute; */
   border-radius: 5px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   padding: 12px;
-  margin-left: -50px;
-  margin-top: -170px;
   font-family: Roboto, 'Helvetica Neue', Arial;
-  font-size: 24px;
-  width: 75px;
+  font-size: 2.4vw;
   text-align: center;
-  color: #2968bb;
   font-weight: bold;
-  content: "";
-  display: none;
 }
 
 
@@ -131,7 +123,7 @@ input[type="range"] {
   -webkit-appearance: none;
   background: rgba(197, 197, 197, 0.2);
   backdrop-filter: blur(2px);
-  width: 70vw;
+  width: 85vw;
   height: 10vw;
   border-radius: 10px;
   /* max-width: 500px; */

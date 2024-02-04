@@ -5,6 +5,7 @@ import { socket } from "@/lib/socket";
 
 export default function Home() {
   const [value, setValue] = useState(0);
+  const [won, setWon] = useState(false);
   const [cheers, setCheers] = useState("Let's GO!!!!!");
 
   const longAhead = [
@@ -30,16 +31,20 @@ export default function Home() {
 
 
   function onPress() {
-    setValue((r) => r += 2);
-    const randomIndex = Math.floor(Math.random() * longAhead.length);
+    if (!won) {
+      setValue((r) => r += 1);
+      const randomIndex = Math.floor(Math.random() * longAhead.length);
 
-    if (value < 50) {
-      setCheers(longAhead[randomIndex])
-    }else if (value >= 50 && value<100) {
-      setCheers(approaching[randomIndex])
-    } else if (value>=100) {
-      setCheers(winner[randomIndex])
+      if (value < 50) {
+        setCheers(longAhead[randomIndex])
+      } else if (value >= 50 && value < 100) {
+        setCheers(approaching[randomIndex])
+      } else if (value >= 100) {
+        setWon(true);
+        setCheers(winner[randomIndex]);
+      }
     }
+
   }
   useEffect(() => {
     socket.on('story', onPress);
@@ -58,12 +63,12 @@ export default function Home() {
       </div>
 
       <div className={styles.center}>
-        <label for="slider" className={styles.label}>{(value / 100).toFixed()}%</label>
-        <input id="slider" name="slider" type="range" value={value} max={100} />
+        <label for="slider" className={styles.label}><h3>{cheers}</h3></label>
+        <input id="slider" name="slider" type="range" value={value} max={100} step={1} />
       </div>
 
       <div className={styles.grid}>
-        <h3>{cheers}</h3>
+
       </div>
     </main >
   );
