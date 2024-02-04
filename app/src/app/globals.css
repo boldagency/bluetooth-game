@@ -86,13 +86,13 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: rgb(255,255,255);
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      rgb(0, 0, 0)
     )
-    rgb(var(--background-start-rgb));
+    rgb(32, 32, 32);
 }
 
 a {
@@ -162,4 +162,10 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-webkit-slider-thumb:active {
   background-position: 100% 0px;
   transform: scale(2) rotateZ(var(–thumb-rotate, 10deg));
+}
+
+
+h3 {
+  width: 100%;
+  text-align: center;
 }
