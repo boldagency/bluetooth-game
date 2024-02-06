@@ -63,12 +63,13 @@ export default function Home() {
     gsap.ticker.add((t, d, f) => {
 
       const car1Pos = { x: gsap.getProperty('.car1Group', 'x'), y: gsap.getProperty('.car1Group', 'y') };
-      gsap.to('#pov1', { x: -car1Pos.x + 99, y: -car1Pos.y + 85, duration: 0.1 })
-      gsap.to('.leftSide .main', { attr: { viewBox: (45 * p1.speed * 100) + ' ' + (45 * p1.speed * 100) + ' ' + (165 - 45 * p1.speed * 100) + ' ' + (165 - 45 * p1.speed * 100) } })
+      gsap.to('#pov1', { x: 10, y: 100, duration: 0.1 })
+      //   gsap.to('.leftSide .main', { attr: { viewBox: (45 * p1.speed * 100) + ' ' + (45 * p1.speed * 100) + ' ' + (165 - 45 * p1.speed * 100) + ' ' + (165 - 45 * p1.speed * 100) } })
+      gsap.to('.leftSide .main', { attr: { viewBox: -0.2 * window.innerWidth / 2 + ' 0 ' + (window.innerWidth / 2) + ' ' + (window.innerHeight / 2) } })
 
-      const car2Pos = { x: gsap.getProperty('.car2Group', 'x'), y: gsap.getProperty('.car2Group', 'y') };
-      gsap.to('#pov2', { x: -car2Pos.x + 99, y: -car2Pos.y + 85, duration: 0.1 })
-      gsap.to('.rightSide .main', { attr: { viewBox: (45 * p2.speed * 100) + ' ' + (45 * p2.speed * 100) + ' ' + (165 - 45 * p2.speed * 100) + ' ' + (165 - 45 * p2.speed * 100) } })
+      // const car2Pos = { x: gsap.getProperty('.car2Group', 'x'), y: gsap.getProperty('.car2Group', 'y') };
+      // gsap.to('#pov2', { x: -car2Pos.x + 99, y: -car2Pos.y + 85, duration: 0.1 })
+      // gsap.to('.rightSide .main', { attr: { viewBox: (45 * p2.speed * 100) + ' ' + (45 * p2.speed * 100) + ' ' + (165 - 45 * p2.speed * 100) + ' ' + (165 - 45 * p2.speed * 100) } })
 
       let car1Slow = 1
       const car1_y = gsap.getProperty('.car1', 'y');
@@ -110,10 +111,10 @@ c-20,17-43,60-46,92c-3,37-34,89-114,84c-87-5-99-89-95-117s25-97-7-130s-72-7-98-2
 
           <g id="pov1">
             <g id="baseGroup">
-              <use href="#track" stroke="#C2B280" stroke-width="45" />
-              <use href="#track" stroke="#111" stroke-width="29" />
-              <use href="#track" stroke="#fff" stroke-dasharray="3.5 7.1" />
-              <polyline points="30,-35.5 42,-10" stroke="#fff" stroke-width="15" stroke-dasharray="3 3" />
+              <use href="#track" stroke="#C2B280" strokeWidth="45" />
+              <use href="#track" stroke="#111" strokeWidth="29" />
+              <use href="#track" stroke="#fff" strokeDasharray="3.5 7.1" />
+              <polyline points="30,-35.5 42,-10" stroke="#fff" strokeWidth="15" strokeDasharray="3 3" />
               <g className="car1Group">
                 <g className="car1">
                   <path fill="#f0a" d="M12,2c0,0,6.5-1,9.8,0S40,2,49,2.5S58.8,3,61.9,3S67,1,74,2s11,5,13,6s3,23,1,25s-9,7-17,7s-3-1-9-1s-17,1-25,0s-14,0-17,0s-9,1-14-4S1,23.7,1,20.9S1,11,4,8S10,2,12,2z" />
@@ -132,8 +133,8 @@ c-20,17-43,60-46,92c-3,37-34,89-114,84c-87-5-99-89-95-117s25-97-7-130s-72-7-98-2
         <svg viewBox="0 0 600 600" style={{ opacity: 0 }} preserveAspectRatio="xMidYMax meet">
           <circle cx="300" cy="600" r="120" fill="rgba(0,0,0,0.7)" />
           <circle cx="300" cy="591" r="105" fill="rgba(0,0,0,0.6)" />
-          <text className='mph' x="300" y="560" fill="#fff" text-anchor="middle" font-size="50">0</text>
-          <text x="300" y="585" fill="#fff" text-anchor="middle" font-size="16.5">mph</text>
+          <text className='mph' x="300" y="560" fill="#fff" textAnchor="middle" fontSize="50">0</text>
+          <text x="300" y="585" fill="#fff" textAnchor="middle" fontSize="16.5">mph</text>
         </svg>
       </div>
       {/* <div className="rightSide">
@@ -146,8 +147,8 @@ c-20,17-43,60-46,92c-3,37-34,89-114,84c-87-5-99-89-95-117s25-97-7-130s-72-7-98-2
         <svg viewBox="0 0 600 600" style={{ opacity: 0 }} preserveAspectRatio="xMidYMax meet">
           <circle cx="300" cy="600" r="120" fill="rgba(0,0,0,0.7)" />
           <circle cx="300" cy="591" r="105" fill="rgba(0,0,0,0.6)" />
-          <text className='mph' x="300" y="560" fill="#fff" text-anchor="middle" font-size="50">0</text>
-          <text x="300" y="585" fill="#fff" text-anchor="middle" font-size="16.5">mph</text>
+          <text className='mph' x="300" y="560" fill="#fff" textAnchor="middle" fontSize="50">0</text>
+          <text x="300" y="585" fill="#fff" textAnchor="middle" fontSize="16.5">mph</text>
         </svg>
       </div> */}
     </main >
