@@ -1,11 +1,15 @@
 "use client"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
+import GameCounter from "@/components/GameComponents/GameCounter/GameCounter";
+import GameEnd from "@/components/GameComponents/GameEnd/GameEnd";
 gsap.registerPlugin(MotionPathPlugin)
 
 
 export default function Home() {
+  const [showGameEnd, setShowGameEnd] = useState(false);
+
   useEffect(() => {
     const p1 = { left: 0, right: 0, up: 0, speed: 0, tl: null },
       p2 = { ...p1 }
@@ -101,6 +105,9 @@ export default function Home() {
 
   return (
     <main>
+      <GameCounter setShowGameEnd={setShowGameEnd} />
+      {showGameEnd && <GameEnd showGameEnd={showGameEnd} />}
+
       <div className="leftSide">
         <svg className='main' viewBox="0 0 150 150" style={{ opacity: 0 }} fill="none">
           <defs>

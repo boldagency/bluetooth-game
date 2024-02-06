@@ -1,0 +1,23 @@
+@import "../../../../styles/abstracts";
+
+.section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    z-index: 10;
+    background-color: black;
+    color: white;
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2vw;
+
+        .text {}
+    }
+}
