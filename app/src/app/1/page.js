@@ -11,8 +11,8 @@ export default function Home() {
   const [showGameEnd, setShowGameEnd] = useState(false);
 
   useEffect(() => {
-    const p1 = { left: 0, right: 0, up: 1, speed: 0.01, tl: null },
-      p2 = { ...p1, speed: 0.015 }
+    const p1 = { left: 0, right: 0, up: 1, speed: (40 / 3000), tl: null },
+      p2 = { ...p1, speed: (50 / 3000) }
 
     gsap.set('.car1, .car2', { scaleX: -0.15, scaleY: 0.15 })
 
