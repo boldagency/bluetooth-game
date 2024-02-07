@@ -48,25 +48,7 @@ export default function Home() {
     }
 
   }
-  useEffect(() => {
-    // socket.on('story', onPedal);
-    resetRace();
-    onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
-      const rec = doc.data();
-      console.log("PEDAL",rec)
-
-      const rec1 = parseInt(rec.p1);
-      const rec2 = parseInt(rec.p2);
-      if (rec1>=100 || rec2 >=100) setWon(true);
-      else {
-        onPedal(rec2)
-      }
-    });
-
-    return () => {
-      // socket.off('story', clean);
-    };
-  },[])
+ 
   return (
     <main className={styles.main}>
       <div className={styles.description}>

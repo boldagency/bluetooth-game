@@ -3,13 +3,15 @@ import { useEffect, useState } from "react";
 import styles from "../page.module.css";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db, resetRace } from "@/lib/Fire";
+import RaceProvider, { useAppContext } from "../race-provider";
 
 
 export default function Home() {
-  const [value, setValue] = useState(0);
+  const [p1Distance, setP1Distance] = useState(0);
+  const [p2Distance, setP2Distance] = useState(0);
   const [won, setWon] = useState(false);
   const [cheers, setCheers] = useState("Let's GO!!!!!");
-
+  const appContext = useAppContext();
   const longAhead = [
     "Pedal faster! You're breezing through the course!",
     "Keep spinning those wheels! Victory is just around the bend!",
@@ -42,48 +44,39 @@ export default function Home() {
       } else if (progress >= 50 && progress < 100) {
         setCheers(approaching[randomIndex])
       } else if (progress >= 100) {
-       
+
         setCheers(winner[randomIndex]);
       }
     }
 
   }
-  useEffect(() => {
-    // socket.on('story', onPedal);
-    resetRace();
-    onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
-      const rec = doc.data();
-      console.log("PEDAL",rec)
-
-      const rec1 = parseInt(rec.p1);
-      const rec2 = parseInt(rec.p2);
-      if (rec1>=100 || rec2 >=100) setWon(true);
-      else {
-        onPedal(rec1)
-      }
-    });
-
-    return () => {
-      // socket.off('story', clean);
-    };
-  },[])
+  // useEffect(() => {
+  //   console.log("page",appContext)
+  //   // setP1Distance(appContext);
+  // }, [appContext])
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
+    <RaceProvider>
+      <main className={styles.main}>
+        <div className={styles.description}>
+          <div>
 
-        <div>
+          </div>
+        </div>
+
+        <div className={styles.center}>
+          {/* <label for="slider" className={styles.label}><h3>{cheers}</h3></label> */}
+          <input id="slider" name="slider" type="range" value={p1Distance} max={100} step={0.05} />
+        </div>
+        <div className={styles.center}>
+          {/* <label for="slider" className={styles.label}><h3>{cheers}</h3></label> */}
+          <input id="slider" name="slider" type="range" value={p2Distance} max={100} step={0.05} />
+        </div>
+
+        <div className={styles.grid}>
 
         </div>
-      </div>
+      </main >
+    </RaceProvider>
 
-      <div className={styles.center}>
-        <label for="slider" className={styles.label}><h3>{cheers}</h3></label>
-        <input id="slider" name="slider" type="range" value={value} max={100} step={0.05} />
-      </div>
-
-      <div className={styles.grid}>
-
-      </div>
-    </main >
   );
 }
