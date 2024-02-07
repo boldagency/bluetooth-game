@@ -20,6 +20,11 @@ $screen-desktop: 1380px;
     }
 }
 
+@mixin landscape() {
+    @media (orientation: landscape) {
+        @content;
+    }
+}
 
 @mixin small-screen {
     @media (max-width: $screen-small) {
