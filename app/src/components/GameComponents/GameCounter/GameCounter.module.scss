@@ -1,12 +1,20 @@
 @import "../../../../styles/abstracts";
 
-.counterContainer {
+.counter {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    top: 4vw;
+    inset-inline-start: 4vw;
+    width: fit-content;
 
-    .counterNumber {}
+    .counterContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 20vw;
+        padding: 2vw;
+        border-radius: 2vw;
+
+        .counterNumber {}
+    }
 }

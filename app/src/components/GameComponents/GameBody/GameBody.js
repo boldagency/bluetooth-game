@@ -132,7 +132,7 @@ c-20,17-43,60-46,92c-3,37-34,89-114,84c-87-5-99-89-95-117s25-97-7-130s-72-7-98-2
 
             </svg>
             <svg className={cx(styles.svg)} viewBox="0 0 600 600" style={{ opacity: 0 }} preserveAspectRatio="xMidYMax meet">
-                <circle cx="300" cy="600" r="120" fill="rgba(0,0,0,0.7)" />
+                <circle cx="300" cy="600" r="120" fill="#2138DF" />
                 <circle cx="300" cy="591" r="105" fill="rgba(0,0,0,0.6)" />
                 <text className='mph' x="300" y="560" fill="#fff" textAnchor="middle" fontSize="50">0</text>
                 <text x="300" y="585" fill="#fff" textAnchor="middle" fontSize="16.5">mph</text>

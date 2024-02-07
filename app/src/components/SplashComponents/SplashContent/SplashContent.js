@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import cx from "classnames";
 import styles from "./SplashContent.module.scss";
 
 export default function SplashContent() {
-    const [time, setTime] = useState(0);
+    const [time, setTime] = useState(null);
     const [navigateToGame, setNavigateToGame] = useState(false);
-
+    const router = useRouter()
     useGSAP(() => {
         const timline = gsap.timeline({}).delay(1)
             .to(`.${styles.info}`, {
@@ -39,7 +40,8 @@ export default function SplashContent() {
         }, 1000);
 
         if (time === 0) {
-            setNavigateToGame(true)
+            // setNavigateToGame(true)
+            router.push("/1")
         }
 
         return () => {
