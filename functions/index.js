@@ -15,6 +15,29 @@ app.use(cors({ origin: true }));
 
 let race = db.collection('race');
 
+function isNull(x) {
+    return Object.is(x, null);
+}
+
+function isUndefined(x) {
+    return Object.is(x, undefined);
+}
+
+function exists(x) {
+    if(isNull(x) || isUndefined(x)) { return false; }
+    return true;
+}
+
+const GameState = {
+    Start: 0,
+    Waiting: 1,
+    Warmup: 1,
+    Race: 2,
+    Finish: 3
+}
+
+const delta = 5;
+
 app.post("/race-init", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
@@ -25,7 +48,12 @@ app.post("/race-init", async (req, res) => {
             .doc()
             .create({
                 p1: 0,
-                p2: 0
+                p2: 0,
+                rpm1: 0,
+                rpm2: 0,
+                pName1: "",
+                pName2: "",
+                state: GameState.Start
             });
         return res.status(200).send("Game init success");
     }
@@ -40,9 +68,36 @@ app.post("/race-clean", async (req, res) => {
     try {
         await (await race.get()).docs[0].ref.update({
             p1: 0,
-            p2: 0
+            p2: 0,
+            rpm1: 0,
+            rpm2: 0,
+            winner: 0,
+            pName1: "",
+            pName2: "",
+            state: GameState.Start
         });
         return res.status(200).send("Game clean success");
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
+app.post("/race-new", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    try {
+        let data = req.body;
+        if (data.pName1 && data.pName2) {
+            await (await race.get()).docs[0].ref.update({
+                pName1: data.pName1,
+                pName2: data.pName2
+            });
+            return res.status(200).send("players name updated");
+        } else {
+            return res.status(500).send('PLAYER NAME required');
+        }
+
     }
     catch (error) {
         console.log(error);
@@ -54,16 +109,85 @@ app.post("/set-players", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
         let data = req.body;
-        const oldval = (await (await race.get()).docs[0].ref.get()).data();
-        if (data.p1 && oldval.p1<100) {
-            await (await race.get()).docs[0].ref.update('p1', oldval.p1+ 0.5);
-            return res.status(200).send("p1 updated");
-        }
-        if (data.p2 && oldval.p2<100) {
-            await (await race.get()).docs[0].ref.update('p2', oldval.p2+ 0.5);
-            return res.status(200).send("p2 updated");
+        const currRace = (await race.get()).docs[0]
+        const oldval = currRace.data();
+        let currState = oldval.state;
+        let p1 = oldval.p1;
+        let p2 = oldval.p2;
+        let rpm1 = oldval.rpm1;
+        let rpm2 = oldval.rpm2;
+        console.log('rec',data)
+
+        if (exists(data.rpm1)) {
+            console.log('update rpm1')
+            await (await race.get()).docs[0].ref.update('rpm1', data.rpm1);
         }
 
+        if (exists(data.rpm2)) {
+            await (await race.get()).docs[0].ref.update('rpm2', data.rpm2);
+        }
+
+        if (currState === GameState.Start && (rpm1 === 0 || rpm2 === 0)) {
+            await currRace.ref.update('state', GameState.Waiting);
+        } else if (currState === GameState.Waiting && rpm1 > 0 && rpm2 > 0) {
+            await currRace.ref.update('state', GameState.Warmup);
+        } else if (currState === GameState.Race) {
+            if (data.rpm1 && p1 < 100) {
+                await currRace.ref.update('p1', p1 + delta);
+            }
+            if (data.rpm2 && p2 < 100) {
+                await currRace.ref.update('p2', p2 + delta);
+            }
+        }
+        const updated = currRace.data();
+        if (updated.state === GameState.Race &&
+            (updated.p1 >= 100 || updated.p2 >= 100)) {
+            await currRace.ref.update('state', GameState.Finish);
+            if (updated.p1 >= 100) {
+                await currRace.ref.update('winner', 1);
+            } else {
+                await currRace.ref.update('winner', 2);
+            }
+
+        }
+
+        return res.status(200).send("player updated");
+
+
+
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
+app.post("/start-race", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    try {
+        const currRace = (await race.get()).docs[0]
+        await currRace.ref.update('state', GameState.Race);
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
+app.post("/time-up", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    try {
+        const currRace = (await race.get()).docs[0]
+        const data = currRace.data()
+        if (data.state === GameState.Race) {
+            await currRace.ref.update('state', GameState.Finish);
+            if (data.p1 > data.p2) {
+                await currRace.ref.update('winner', 1);
+            } else {
+                await currRace.ref.update('winner', 2);
+            }
+
+        }
     }
     catch (error) {
         console.log(error);

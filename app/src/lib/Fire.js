@@ -26,3 +26,29 @@ export function resetRace() {
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 }
+
+
+export function startRace() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+    };
+
+    fetch("https://us-central1-bluetooth-race.cloudfunctions.net/app/start-race", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
+
+
+export function timeUp() {
+    var requestOptions = {
+        method: 'POST',
+        redirect: 'follow'
+    };
+
+    fetch("https://us-central1-bluetooth-race.cloudfunctions.net/app/time-up", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+}
