@@ -8,6 +8,7 @@ import './workout-graph.js';
 import './watch.js';
 import './ant-device-scan.js';
 import './keyboard.js';
+import './raceWatcher.js';
 
 function start() {
     console.log('start views.');
