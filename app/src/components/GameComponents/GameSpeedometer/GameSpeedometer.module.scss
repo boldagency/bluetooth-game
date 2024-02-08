@@ -1,8 +1,29 @@
 @import "../../../../styles/abstracts";
 
-.speedometer {
+
+.speedometerWrapper {
     position: fixed;
-    bottom: 4vw;
-    margin-inline: auto;
-    width: fit-content;
+    bottom: -8vw;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+
+
+    .speedometerContainer {
+        width: 25vh;
+        height: 25vh;
+        position: relative;
+
+
+        .canvas,
+        .svg {
+            position: absolute;
+            user-select: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+
+        }
+    }
 }

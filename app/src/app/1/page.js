@@ -9,7 +9,7 @@ import GameBodyNew from "@/components/GameComponents/GameBodyNew/GameBodyNew";
 export default function Home() {
   const [showGameEnd, setShowGameEnd] = useState(false);
 
- 
+
   return (
     <>
       <GameCounter setShowGameEnd={setShowGameEnd} />
