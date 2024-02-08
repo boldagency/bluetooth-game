@@ -6,10 +6,10 @@ import GameBody from "@/components/GameComponents/GameBody/GameBody";
 import GameSpeedometer from "@/components/GameComponents/GameSpeedometer/GameSpeedometer";
 import GameBodyNew from "@/components/GameComponents/GameBodyNew/GameBodyNew";
 
-
 export default function Home() {
   const [showGameEnd, setShowGameEnd] = useState(false);
 
+ 
   return (
     <main>
       <GameCounter setShowGameEnd={setShowGameEnd} />

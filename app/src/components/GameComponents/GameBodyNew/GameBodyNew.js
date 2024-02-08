@@ -4,11 +4,13 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
 gsap.registerPlugin(MotionPathPlugin);
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "@/lib/Fire";
 
 export default function GameBodyNew() {
     useEffect(() => {
-        const p1 = { left: 0, right: 0, up: 1, speed: (20 / 5000), tl: null },
-            p2 = { ...p1, speed: (20 / 5000) }
+        const p1 = { left: 0, right: 0, up: 1, speed: 0, tl: null },
+            p2 = { ...p1, speed: 0 }
 
         gsap.set('.car1, .car2', { scaleX: 0.8, scaleY: 0.8 })
 
@@ -49,12 +51,30 @@ export default function GameBodyNew() {
             if (p2.up) gsap.to(p2, { speed: p2.speed })
             else gsap.to(p2, { speed: 0, duration: 3 })
 
-            if (f % 9 == 0) gsap.set('.mph', { textContent: (i) => eval('p' + (i + 1)).speed * 11300, snap: 'textContent', ease: 'none' })
-            gsap.to(p1.tl, { progress: '+=' + p1.speed })
-            gsap.to(p2.tl, { progress: '+=' + p2.speed })
+            // if (f % 9 == 0) gsap.set('.mph', { textContent: (i) => eval('p' + (i + 1)).speed * 11300, snap: 'textContent', ease: 'none' })
+            // gsap.to(p1.tl, { progress: '+=' + p1.speed })
+            // gsap.to(p2.tl, { progress: '+=' + p2.speed })
         })
-    })
 
+        // firestroe
+        onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
+            const rec = doc.data();
+            const rec1 = parseInt(rec.rpm1);
+            const rec2 = parseInt(rec.rpm2);
+            console.log(rec,rec1,rec2);
+            if(rec1/5000 > 0 && rec1/5000) {
+                gsap.to(p1.tl, { progress: '+=' + rec1/5000 })
+            }
+            if(rec2/5000 > 0 && rec2/5000) {
+                gsap.to(p2.tl, { progress: '+=' + rec2/5000 })
+            }
+
+        });
+    })
+    // useEffect(() => {
+    //     // resetRace();
+        
+    // }, []);
     return (
         <div className={cx(styles.bodyContainer)}>
             <svg className={cx(styles.svgContainer)} style={{ opacity: 0 }} width="724" height="1446" viewBox="0 0 724 1446" fill="none" xmlns="http://www.w3.org/2000/svg">
