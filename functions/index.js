@@ -15,6 +15,19 @@ app.use(cors({ origin: true }));
 
 let race = db.collection('race');
 
+function isNull(x) {
+    return Object.is(x, null);
+}
+
+function isUndefined(x) {
+    return Object.is(x, undefined);
+}
+
+function exists(x) {
+    if(isNull(x) || isUndefined(x)) { return false; }
+    return true;
+}
+
 const GameState = {
     Start: 0,
     Waiting: 1,
@@ -80,12 +93,12 @@ app.post("/set-players", async (req, res) => {
         let rpm2 = oldval.rpm2;
         console.log('rec',data)
 
-        if (data.rpm1) {
+        if (exists(data.rpm1)) {
             console.log('update rpm1')
             await (await race.get()).docs[0].ref.update('rpm1', data.rpm1);
         }
 
-        if (data.rpm2) {
+        if (exists(data.rpm2)) {
             await (await race.get()).docs[0].ref.update('rpm2', data.rpm2);
         }
 
