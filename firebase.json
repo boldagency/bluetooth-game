@@ -1,1 +1,14 @@
-{}
+{
+  "functions": {
+    "source": "functions"
+  },
+  "hosting": {
+    "public": "bluetooth-server/dist",
+    "site": "bluetooth-race-server",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

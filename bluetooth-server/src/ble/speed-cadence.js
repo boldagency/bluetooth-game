@@ -1,0 +1,64 @@
+import { xf, equals, exists } from '../functions.js';
+import { ble } from './web-ble.js';
+import { uuids } from './uuids.js';
+import { Device } from './device.js';
+import { SpeedCadenceService } from './cscs/cscs.js';
+import { models } from '../models/models.js';
+
+class SpeedCadence extends Device {
+    defaultId() {
+        return `ble:speed-and-cadence`;
+    }
+    defaultFilter() {
+        return ble.requestFilters.speedCadence;
+    }
+    async start() {
+        const self = this;
+
+        const service = await self.getService(uuids.speedCadence);
+
+        const maxRateCount = (/magene|gemini/.test(self.name.toLowerCase())) ? 10 : 3;
+
+        self.speedCadence = new SpeedCadenceService({
+            onData: onData.bind(self),
+            options: {maxRateCount},
+            service,
+            ble,
+        });
+
+        await self.speedCadence.start();
+    }
+}
+
+function onData(data) {
+    const self = this;
+    console.log("received",data)
+
+    if(exists(data.cadence)) {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify({ rpm1: data.cadence }),
+            redirect: 'follow'
+        };
+        fetch("https://us-central1-bluetooth-race.cloudfunctions.net/app/set-players", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+        console.log("Sending data to the client");
+        if (models.sources.isSource('cadence', self.id)) {
+            xf.dispatch('cadence', data.cadence);
+        }
+        if (models.sources.isSource('cadence2', self.id)) {
+            xf.dispatch('cadence2', data.cadence);
+        }
+    };
+    if(exists(data.speed) && models.sources.isSource('speed', self.id)) {
+        xf.dispatch(`speed`, models.speed.kmhToMps(data.speed));
+    };
+}
+
+export { SpeedCadence };
+
