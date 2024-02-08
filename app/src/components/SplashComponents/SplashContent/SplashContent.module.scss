@@ -24,7 +24,7 @@
         }
 
         .background {
-            height: 60vh;
+            min-height: 70vh;
 
             img {
                 width: 100%;
@@ -58,9 +58,11 @@
         .numberContainer {
             display: flex;
             justify-content: center;
+            gap: 1vw;
 
             .number {
                 line-height: 0.7;
+                font-style: italic;
             }
         }
     }

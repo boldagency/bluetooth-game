@@ -11,12 +11,12 @@ export default function Home() {
   const [showGameEnd, setShowGameEnd] = useState(false);
 
   return (
-    <main>
+    <>
       <GameCounter setShowGameEnd={setShowGameEnd} />
       {/* <GameBody /> */}
       <GameBodyNew />
       {/* <GameSpeedometer /> */}
-      {/* {showGameEnd && <GameEnd showGameEnd={showGameEnd} />} */}
-    </main >
+      {showGameEnd && <GameEnd showGameEnd={showGameEnd} />}
+    </ >
   );
 }
