@@ -55,7 +55,7 @@ export default function SplashContent() {
             <div className={cx(styles.sectionIntroContainer, "first-section")}>
                 <div className={cx(styles.info, "space-horizontal")}>
                     <h2 className={cx(styles.title)}>Ready to take on the challenge?</h2>
-                    <div className={cx(styles.description, "body2-size")}> Step up and prove your skills in our Galaxy Fitness Game</div>
+                    <div className={cx(styles.description, "body2-size font-weight-regular")}> Step up and prove your skills in our Galaxy Fitness Game</div>
                 </div>
 
                 <div className={cx(styles.background)}>

@@ -11,12 +11,12 @@ export default function Home() {
 
  
   return (
-    <main>
+    <>
       <GameCounter setShowGameEnd={setShowGameEnd} />
       {/* <GameBody /> */}
       <GameBodyNew />
       {/* <GameSpeedometer /> */}
-      {/* {showGameEnd && <GameEnd showGameEnd={showGameEnd} />} */}
-    </main >
+      {showGameEnd && <GameEnd showGameEnd={showGameEnd} />}
+    </ >
   );
 }
