@@ -10,7 +10,7 @@ class SpeedCadence2 extends Device {
         return `ble:speed-and-cadence2`;
     }
     defaultFilter() {
-        return ble.requestFilters.speedCadence;
+        return ble.requestFilters.speedCadence2;
     }
     async start() {
         const self = this;

@@ -27,7 +27,12 @@ const _power = {
 };
 
 const _speedCadence = {
-    filters: [{services: [uuids.speedCadence]}],
+    filters: [{name: "Wahoo CADENCE 873F"}],
+    optionalServices: [uuids.deviceInformation]
+};
+
+const _speedCadence2 = {
+    filters: [{name: "Wahoo CADENCE 9FFF"}],
     optionalServices: [uuids.deviceInformation]
 };
 
@@ -70,6 +75,7 @@ class WebBLE {
         hrm:          _hrm,
         controllable: _controllable,
         speedCadence: _speedCadence,
+        speedCadence2: _speedCadence2,
         power:        _power,
         moxy:         _moxy,
         all:          _all
