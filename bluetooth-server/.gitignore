@@ -5,6 +5,7 @@
 /node_modules/
 /gists/
 /src/simulation-scripts.js
+/.parcel-cache/
 **/.DS_Store
 .cache
 notes.txt

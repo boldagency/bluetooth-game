@@ -7,20 +7,20 @@
 /* Theme */
 /* Page */
 /* Home Page */
-    /* Data Tiles */
-    /* Graphs */
-    /* Target Controls */
+/* Data Tiles */
+/* Graphs */
+/* Target Controls */
 /* Fixed Bottom */
-    /* Watch */
-    /* Menu */
+/* Watch */
+/* Menu */
 /* Workout Page */
-    /* Workout List */
-    /* Ride Report */
-    /* Editor */
+/* Workout List */
+/* Ride Report */
+/* Editor */
 /* Settings Page */
-    /* ANT Device Request */
-    /* App Connections */
-    /* About */
+/* ANT Device Request */
+/* App Connections */
+/* About */
 /* Media Queries */
 
 /* Reset */
@@ -31,49 +31,71 @@
     margin: 0;
     padding: 0;
 }
-nav ul, ul.clean {
+
+nav ul,
+ul.clean {
     margin-left: 0;
-    list-style-type: none!important;
+    list-style-type: none !important;
 }
-a, a:visited {
+
+a,
+a:visited {
     text-decoration: none;
 }
-h1, h2 {
+
+h1,
+h2 {
     font-weight: normal;
 }
-h3, h4, h5, h6 {
+
+h3,
+h4,
+h5,
+h6 {
     font-weight: normal;
 }
+
 a:focus {
     outline: none;
 }
+
 a::-moz-focus-inner {
     border: 0;
 }
-input, select, textarea {
+
+input,
+select,
+textarea {
     outline: 0;
 }
+
 input[type="button"] {
     outline: none;
 }
+
 input[type="button"]::-moz-focus-inner {
     border: 0;
 }
+
 button {
     outline: none;
 }
+
 button::-moz-focus-inner {
     border: 0;
 }
+
 img {
-    outline: 0!important;
-    border: 0!important;
+    outline: 0 !important;
+    border: 0 !important;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 /* END Reset */
 
 /* Defaults */
@@ -96,11 +118,17 @@ body {
     user-select: none;
 }
 
-header, footer, section, article, nav {
+header,
+footer,
+section,
+article,
+nav {
     display: block;
 }
 
-input, button, textarea {
+input,
+button,
+textarea {
     font-family: var(--ssr-font-family);
 }
 
@@ -184,12 +212,28 @@ input[type="number"] {
     width: 120px;
     z-index: 1;
 }
+
 /* END Defaults */
 
 /* Atomics */
-.h1, .h2, .h3, h4, .h5, .t1, .t2, .t3, .t4, .t5, .t6,
-.a, .text, button, .btn,
-input, svg, a,
+.h1,
+.h2,
+.h3,
+h4,
+.h5,
+.t1,
+.t2,
+.t3,
+.t4,
+.t5,
+.t6,
+.a,
+.text,
+button,
+.btn,
+input,
+svg,
+a,
 .flat-btn,
 .settings-switch-bnt {
     -webkit-touch-callout: none;
@@ -216,17 +260,21 @@ input, svg, a,
 }
 
 /* Clearfix */
-.cf:before, .cf:after {
+.cf:before,
+.cf:after {
     content: " ";
     display: table;
 }
+
 .cf:after {
     clear: both;
 }
+
 .cf {
     /* *zoom: 1; */
     /*For IE 6/7 only*/
 }
+
 /* End Clearfix */
 /* End Atomics */
 
@@ -234,6 +282,7 @@ input, svg, a,
 .hide {
     visibility: hidden;
 }
+
 /* End */
 
 /* Variables */
@@ -245,53 +294,60 @@ input, svg, a,
 body {
 
     /* Color */
-    --black:       #000;
-    --white:       #fff;
-    --gray:        #aaa;
-    --green:       #40FF70;
-    --red:         #FF495F;
-    --yellow:      #F8C73A;
-    --dark:        #28272D;
-    --chrome:      #35363a;
+    --black: #000;
+    --white: #fff;
+    --gray: #aaa;
+    --green: #40FF70;
+    --red: #FF495F;
+    --yellow: #F8C73A;
+    --dark: #28272D;
+    --chrome: #35363a;
 
-    --zone-red:    #FE340B;
+    --zone-red: #FE340B;
     --zone-orange: #FF663A;
     --zone-yellow: #F8C73A;
-    --zone-green:  #57C057;
-    --zone-teal:   #44A5AB;
-    --zone-blue:   #328AFF;
-    --zone-gray:   #636468;
+    --zone-green: #57C057;
+    --zone-teal: #44A5AB;
+    --zone-blue: #328AFF;
+    --zone-gray: #636468;
 
     --orange-logo: #FC4C02;
-    --white-gray:  #F7F7FA;
-    --red-logo:    #E50914;
+    --white-gray: #F7F7FA;
+    --red-logo: #E50914;
 
-    --black-opacity-01:  rgba(0,0,0, 0.1);
-    --black-opacity-02:  rgba(0,0,0, 0.2);
-    --white-opacity-01:  rgba(255,255,255, 0.1);
-    --white-opacity-03:  rgba(255,255,255, 0.3);
+    --black-opacity-01: rgba(0, 0, 0, 0.1);
+    --black-opacity-02: rgba(0, 0, 0, 0.2);
+    --white-opacity-01: rgba(255, 255, 255, 0.1);
+    --white-opacity-03: rgba(255, 255, 255, 0.3);
 }
+
 /* END Variables */
 
 /* Color */
 .zone-one {
     background-color: var(--zone-gray);
 }
+
 .zone-two {
     background-color: var(--zone-blue);
 }
+
 .zone-three {
     background-color: var(--zone-teal);
 }
+
 .zone-four {
     background-color: var(--zone-green);
 }
+
 .zone-five {
     background-color: var(--zone-yellow);
 }
+
 .zone-six {
     background-color: var(--zone-orange);
 }
+
 .zone-seven {
     background-color: var(--zone-red);
 }
@@ -299,21 +355,27 @@ body {
 .zone-one-color {
     color: var(--zone-gray);
 }
+
 .zone-two-color {
     color: var(--zone-blue);
 }
+
 .zone-three-color {
     color: var(--zone-teal);
 }
+
 .zone-four-color {
     color: var(--zone-green);
 }
+
 .zone-five-color {
     color: var(--zone-yellow);
 }
+
 .zone-six-color {
     color: var(--zone-orange);
 }
+
 .zone-seven-color {
     color: var(--zone-red);
 }
@@ -321,18 +383,23 @@ body {
 .black {
     color: var(--black);
 }
+
 .white {
     color: var(--white);
 }
+
 .gray {
     color: var(--gray);
 }
+
 .yellow {
     color: var(--yellow);
 }
+
 .red {
     color: var(--red);
 }
+
 .green {
     color: var(--green)
 }
@@ -340,18 +407,23 @@ body {
 .black-bg {
     background-color: var(--black);
 }
+
 .white-bg {
     background-color: var(--white);
 }
+
 .gray-bg {
     background-color: var(--gray);
 }
+
 .yellow-bg {
     background-color: var(--yellow);
 }
+
 .red-bg {
     background-color: var(--red);
 }
+
 .green-bg {
     background-color: var(--green);
 }
@@ -360,21 +432,27 @@ body {
 .gray-zone {
     background-color: var(--zone-gray);
 }
+
 .blue-zone {
     background-color: var(--zone-blue);
 }
+
 .green-zone {
     background-color: var(--zone-green);
 }
+
 .yellow-zone {
     background-color: var(--zone-yellow);
 }
+
 .orange-zone {
     background-color: var(--zone-orange);
 }
+
 .red-zone {
     background-color: var(--zone-red);
 }
+
 .purple-zone {
     background-color: var(--zone-red);
 }
@@ -382,9 +460,11 @@ body {
 .chrome-bg {
     background-color: var(--chrome)
 }
+
 .dark-bg {
     background-color: var(--dark);
 }
+
 /* End Color */
 
 /* Theme */
@@ -393,6 +473,7 @@ body {
     color: var(--white);
     background-color: var(--dark);
 }
+
 .connections-header {
     background-color: var(--chrome);
 }
@@ -400,6 +481,7 @@ body {
 #progress-active {
     background-color: var(--white-opacity-03);
 }
+
 .radio {
     fill: var(--white);
 }
@@ -411,18 +493,23 @@ body {
 .icon-btn .icon {
     fill: var(--gray);
 }
+
 .icon-btn .text {
     color: var(--gray);
 }
+
 .tab-btn.active .text {
     color: var(--white);
 }
+
 .tab-btn.active .icon-fill {
     fill: var(--white);
 }
+
 .control-icon {
     fill: #fff;
 }
+
 /* Dark Theme */
 
 /* Page */
@@ -436,6 +523,7 @@ body {
     font-family: var(--ssr-font-family);
     /* font-variant-numeric: tabular-nums; */
 }
+
 .page {
     width: 100%;
     min-height: 110vh;
@@ -467,6 +555,7 @@ body {
 #workouts-page .page--header {
     margin-bottom: 40px;
 }
+
 /* End Page */
 
 /* Home Page */
@@ -620,41 +709,52 @@ body {
     display: none;
     grid-area: 3 / 1 / 3 / 4;
 }
+
 #data-tile--power {
     grid-area: 1 / 1 / 1 / 3;
 }
+
 #data-tile--interval-time {
     grid-area: 1 / 3 / 1 / 5;
 }
+
 #data-tile--heart-rate {
     grid-area: 1 / 5 / 1 / 7;
 }
+
 #data-tile--slope {
     display: none;
     grid-area: 3 / 4 / 3 / 7;
 }
+
 #data-tile--target {
     grid-area: 2 / 1 / 2 / 3;
     cursor: pointer;
 }
+
 #data-tile--elapsed-time {
     grid-area: 2 / 3 / 2 / 5;
 }
+
 #data-tile--cadence {
     grid-area: 2 / 5 / 2 / 7;
 }
+
 #data-tile--speed {
     grid-area: 3 / 1 / 3 / 4;
     display: none;
 }
+
 #data-tile--distance {
     grid-area: 3 / 4 / 3 / 7;
     display: none;
 }
+
 #data-tile--smo2 {
     grid-area: 3 / 1 / 3 / 4;
     display: none;
 }
+
 #data-tile--thb {
     grid-area: 3 / 4 / 3 / 7;
     display: none;
@@ -664,12 +764,15 @@ body {
 #data-tile--power-avg.active {
     display: block;
 }
+
 #data-tile--slope.active {
     display: block;
 }
+
 #data-tile--speed.active {
     display: block;
 }
+
 #data-tile--distance.active {
     display: block;
 }
@@ -773,12 +876,14 @@ body {
     display: none;
     width: 0;
 }
+
 .data-tile-target--value.active {
     display: block;
     font-size: 1.6em;
     width: auto;
     min-width: 1.5em;
 }
+
 /* END Data Tiles */
 
 /* Graphs */
@@ -792,6 +897,7 @@ body {
     height: var(--graph-total-height);
     width: 100%;
 }
+
 #graph-power {
     overflow: hidden;
 }
@@ -804,6 +910,7 @@ div.graph--bar-group {
     align-items: flex-end;
     padding: 0;
 }
+
 #graph--info--cont {
     display: none;
     font-size: 1.4em;
@@ -838,9 +945,11 @@ div.graph--bar-group {
     font-size: 1.6em;
     font-weight: bold;
 }
+
 .ascent--value {
     right: 0.3em;
 }
+
 .altitude--value {
     left: 0.3em;
 }
@@ -909,8 +1018,7 @@ div.graph--bar-group {
     color: var(--gray);
 }
 
-.graph--bar-distance {
-}
+.graph--bar-distance {}
 
 .workout--graph-cont {
     display: flex;
@@ -955,6 +1063,7 @@ div.graph--bar-group {
     height: var(--graph-height);
     z-index: 1;
 }
+
 /* END Graphs */
 
 /* Target Controls */
@@ -1013,7 +1122,9 @@ div.graph--bar-group {
     align-items: center;
 }
 
-.number-input--value, .number-input--inc, .number-input--dec {
+.number-input--value,
+.number-input--inc,
+.number-input--dec {
     height: var(--number-input-height);
 }
 
@@ -1041,6 +1152,7 @@ div.graph--bar-group {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+
 /* END Target Controls */
 /* END Home Page */
 
@@ -1107,10 +1219,14 @@ div.graph--bar-group {
     max-width: 50%;
 }
 
-#watch-pause, #watch-lap, #watch-stop, #activity-save {
+#watch-pause,
+#watch-lap,
+#watch-stop,
+#activity-save {
     display: none;
 
 }
+
 /* END Watch */
 
 /* Menu */
@@ -1172,6 +1288,7 @@ div.graph--bar-group {
 .menu--btn.active .menu--btn--icon--fill {
     fill: var(--white);
 }
+
 /* END Menu */
 /* END Fixed Bottom */
 
@@ -1294,6 +1411,7 @@ div.graph--bar-group {
     padding: 1.5em 0 0.5em;
     text-align: left;
 }
+
 .radio {
     width: var(--size--icon--global);
     height: var(--size--icon--global);
@@ -1305,6 +1423,7 @@ div.graph--bar-group {
     margin: 0 2em 2em 2em;
     color: var(--gray);
 }
+
 /* END Workout List */
 
 /* Ride Report */
@@ -1424,6 +1543,7 @@ div.graph--bar-group {
 #workout-editor.active {
     display: block;
 }
+
 /* END Ride Report */
 
 /* Editor */
@@ -1433,7 +1553,8 @@ div.graph--bar-group {
     width: 100%;
 }
 
-.editor--row, .editor--form--group {
+.editor--row,
+.editor--form--group {
     max-width: var(--editor-max-width);
     width: 100%;
     margin: 0 auto;
@@ -1508,7 +1629,8 @@ div.graph--bar-group {
     border: none;
 }
 
-.editor--td.power, .editor--td.ramp {
+.editor--td.power,
+.editor--td.ramp {
     font-size: 1.4em;
     font-weight: bold;
 }
@@ -1546,6 +1668,7 @@ div.graph--bar-group {
 .editor--radio.selected {
     display: block;
 }
+
 /* END Editor */
 /* END Workouts Page */
 
@@ -1664,6 +1787,32 @@ div.graph--bar-group {
     border-top: 1px solid var(--white-opacity-01);
 }
 
+.race-form form {
+    text-align: start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.race-form form input {
+    background-color: transparent;
+    outline: none;
+    color: #FFFFFF;
+    font-size: 3.2vw;
+    padding: 1vw;
+    text-align: start;
+    border-bottom: 1px solid #FFF;
+    margin-bottom: 2vw;
+}
+
+.race-form form button {
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #FFF;
+    color: #FFFFFF;
+}
+
 .device-card {
     --settings-row-max-width: 60em;
     --font-size-value: 1.2em;
@@ -1693,7 +1842,7 @@ div.graph--bar-group {
 }
 
 .ant-not-supported {
-    display: none!important;
+    display: none !important;
 }
 
 .device-card--body--row.second {
@@ -1821,9 +1970,11 @@ div.graph--bar-group {
     width: 100%;
     text-align: center;
 }
+
 #ant-device-request.active {
     display: block;
 }
+
 .device-request--wrapper {
     display: inline-block;
 
@@ -1833,13 +1984,15 @@ div.graph--bar-group {
     max-width: 100%;
     width: 48em;
     background-color: var(--chrome);
-    box-shadow: 1px 2px 4px 0px rgba(0,0,0, 0.2);
+    box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.2);
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }
+
 .device-request--list {
     min-height: 100px;
 }
+
 .device-request--item {
     display: grid;
     grid-template-columns: var(--grid-template-columns--device-request--list);
@@ -1847,21 +2000,26 @@ div.graph--bar-group {
     align-items: center;
     cursor: pointer;
 }
+
 .device-request--item.active {
     background-color: var(--black-opacity-01);
 }
+
 .device-request--item--protocol {
     font-size: 1.2em;
 }
+
 .device-request--item--number {
     font-size: 1.2em;
     font-weight: bold;
 }
+
 .device-request--item--type {
     font-size: 1.2em;
 }
-.device-request--item--type {
-}
+
+.device-request--item--type {}
+
 .device-request--controls {
     display: grid;
     grid-template-columns: 60px 1fr 11em 11em;
@@ -1869,9 +2027,11 @@ div.graph--bar-group {
     padding: 1em 1em;
     border-top: 1px solid var(--black-opacity-01);
 }
+
 .device-request--status {
     justify-self: flex-start;
 }
+
 .device-request--controls button {
     margin: 0 1em;
     height: 3em;
@@ -1887,10 +2047,11 @@ div.graph--bar-group {
     border-radius: 3px;
     cursor: pointer;
 }
-.device-request--cancel {
-}
-.device-request--pair {
-}
+
+.device-request--cancel {}
+
+.device-request--pair {}
+
 /* END ANT Device Request */
 
 /* App Connections */
@@ -1918,8 +2079,7 @@ div.graph--bar-group {
     text-transform: uppercase;
 }
 
-.app-connection--content {
-}
+.app-connection--content {}
 
 /* About */
 #about {
@@ -1929,14 +2089,17 @@ div.graph--bar-group {
     max-width: var(--inner-max-width);
     text-align: center;
 }
+
 .about--text {
     font-size: 1.2em;
     line-height: 1.4em;
     margin-bottom: 3em;
 }
+
 .about--version {
     margin: 0.5em auto;
 }
+
 .about--links {
     margin: 0.5em auto;
 }
@@ -1944,14 +2107,14 @@ div.graph--bar-group {
 .license {
     letter-spacing: 1px;
 }
+
 /* END Settings Page */
 
 
 /* Media Queries */
 /* IPHONE 5/SE */
-@media all
-and (max-width: 340px)
-and (max-height: 620px) {
+@media all and (max-width: 340px) and (max-height: 620px) {
+
     /* Home Page MQ */
     #home-page-wrapper {
         grid-template-rows: 40px 2fr 1fr 1fr 70px 80px;
@@ -1974,9 +2137,8 @@ and (max-height: 620px) {
 }
 
 /* IPHONE 6/7/8 Plus */
-@media all
-and (min-width: 414px)
-and (min-height: 730px) {
+@media all and (min-width: 414px) and (min-height: 730px) {
+
     /* Home Page MQ */
     .data-tiles {
         font-size: 1.2rem;
@@ -1985,10 +2147,9 @@ and (min-height: 730px) {
 }
 
 /* Small Tablets, Laptop (split screen) */
-@media all
-and (min-width: 600px)
-and (min-height: 600px) {
-/* and (min-height: 1024) */
+@media all and (min-width: 600px) and (min-height: 600px) {
+
+    /* and (min-height: 1024) */
     /* Home Page MQ */
     .data-tiles {
         display: grid;
@@ -2002,31 +2163,40 @@ and (min-height: 600px) {
         display: block;
         grid-area: 1 / 1 / 1 / 1;
     }
+
     #data-tile--power {
         grid-area: 1 / 2 / 1 / 2;
     }
+
     #data-tile--interval-time {
         grid-area: 1 / 3 / 1 / 3;
     }
+
     #data-tile--heart-rate {
         grid-area: 1 / 4 / 1 / 4;
     }
+
     #data-tile--slope {
         display: block;
         grid-area: 2 / 1 / 2 / 1;
     }
+
     #data-tile--target {
         grid-area: 2 / 2 / 2 / 2;
     }
+
     #data-tile--elapsed-time {
         grid-area: 2 / 3 / 2 / 3;
     }
+
     #data-tile--cadence {
         grid-area: 2 / 4 / 2 / 4;
     }
+
     #data-tile--speed {
         grid-area: 1 / 5 / 1 / 5;
     }
+
     #data-tile--distance {
         grid-area: 2 / 5 / 2 / 5;
     }
@@ -2035,6 +2205,7 @@ and (min-height: 600px) {
         grid-area: 3 / 1 / 3 / 4;
         display: none;
     }
+
     #data-tile--thb.active {
         grid-area: 3 / 4 / 3 / 7;
         display: none;
@@ -2048,15 +2219,19 @@ and (min-height: 600px) {
     .data-tile--switch--group {
         display: none;
     }
+
     #data-tile--power-avg {
         display: block;
     }
+
     #data-tile--slope {
         display: block;
     }
+
     #data-tile--speed {
         display: block;
     }
+
     #data-tile--distance {
         display: block;
     }
@@ -2067,10 +2242,8 @@ and (min-height: 600px) {
 }
 
 /* IPad, Galaxy Tab S, Portrait */
-@media all
-and (min-width: 768px)
-and (min-height: 1024px)
-and (orientation: portrait) {
+@media all and (min-width: 768px) and (min-height: 1024px) and (orientation: portrait) {
+
     /* Home Page MQ */
     #home-page-wrapper {
         grid-template-rows: 50px 2.5fr 1fr 1fr 108px 100px;
@@ -2091,31 +2264,40 @@ and (orientation: portrait) {
         display: block;
         grid-area: 3 / 1 / 3 / 4;
     }
+
     #data-tile--power {
         grid-area: 1 / 1 / 1 / 5;
     }
+
     #data-tile--interval-time {
         grid-area: 1 / 5 / 1 / 9;
     }
+
     #data-tile--heart-rate {
         grid-area: 1 / 9 / 1 / 13;
     }
+
     #data-tile--slope {
         display: block;
         grid-area: 3 / 4 / 3 / 7;
     }
+
     #data-tile--target {
         grid-area: 2 / 1 / 2 / 5;
     }
+
     #data-tile--elapsed-time {
         grid-area: 2 / 5 / 2 / 9;
     }
+
     #data-tile--cadence {
         grid-area: 2 / 9 / 2 / 13;
     }
+
     #data-tile--speed {
         grid-area: 3 / 7 / 3 / 10;
     }
+
     #data-tile--distance {
         grid-area: 3 / 10 / 3 / 13;
     }
@@ -2142,24 +2324,27 @@ and (orientation: portrait) {
     .data-tile--switch--group {
         display: none;
     }
+
     #data-tile--power-avg {
         display: block;
     }
+
     #data-tile--slope {
         display: block;
     }
+
     #data-tile--speed {
         display: block;
     }
+
     #data-tile--distance {
         display: block;
     }
 }
 
 /* IPad, Lanscape */
-@media only screen
-and (min-width: 1024px)
-and (min-height: 768px) {
+@media only screen and (min-width: 1024px) and (min-height: 768px) {
+
     /* Home Page MQ */
     #home-page-wrapper {
         grid-template-rows: 50px 2fr 1fr 1fr 98px 100px;
@@ -2175,9 +2360,8 @@ and (min-height: 768px) {
 }
 
 /* IPad Pro, Portrait */
-@media all
-and (min-width: 1024px)
-and (min-height: 1366px) {
+@media all and (min-width: 1024px) and (min-height: 1366px) {
+
     /* Home Page MQ */
     #home-page-wrapper {
         grid-template-rows: 50px 2.5fr 1fr 1fr 108px 100px;
@@ -2200,10 +2384,7 @@ and (min-height: 1366px) {
 
 
 /* IPad Pro, Landscape */
-@media only screen
-and (min-width: 1360px)
-and (min-height: 1020px)
-and (orientation: landscape) {
+@media only screen and (min-width: 1360px) and (min-height: 1020px) and (orientation: landscape) {
     /* Home Page MQ */
 
     .data-tiles {
@@ -2217,15 +2398,10 @@ and (orientation: landscape) {
 
 
 /* Macbook Air, regular */
-@media only screen
-and (min-width: 1280px)
-and (min-height: 650px) {
-}
+@media only screen and (min-width: 1280px) and (min-height: 650px) {}
 
 /* Macbook Air, fullscreen */
-@media only screen
-and (min-width: 1200px)
-and (min-height: 600px) {
+@media only screen and (min-width: 1200px) and (min-height: 600px) {
     .data-tiles {
         font-size: 2rem;
         --data-tile--heading-font-size: 0.8em;
@@ -2235,17 +2411,13 @@ and (min-height: 600px) {
 }
 
 /* HD Laptop, fullscreen */
-@media only screen
-and (min-width: 1360px)
-and (min-height: 700px) {
+@media only screen and (min-width: 1360px) and (min-height: 700px) {
     .data-tiles {
         font-size: 2.4rem;
     }
 }
 
-@media only screen
-and (min-width: 1600px)
-and (min-height: 800px) {
+@media only screen and (min-width: 1600px) and (min-height: 800px) {
     .data-tiles {
         font-size: 2.6rem;
     }
@@ -2256,9 +2428,7 @@ and (min-height: 800px) {
 }
 
 
-@media only screen
-and (min-width: 1800px)
-and (min-height: 850px) {
+@media only screen and (min-width: 1800px) and (min-height: 850px) {
     /* FHD */
 
     #home-page-wrapper {
@@ -2300,18 +2470,16 @@ and (min-height: 850px) {
     }
 }
 
-@media only screen
-and (min-width: 1900px)
-and (min-height: 900px) {
+@media only screen and (min-width: 1900px) and (min-height: 900px) {
+
     /* FHD */
     .data-tiles {
         font-size: 3.2rem;
     }
 }
 
-@media only screen
-and (min-width: 2400px)
-and (min-height: 1200px) {
+@media only screen and (min-width: 2400px) and (min-height: 1200px) {
+
     /* QHD */
     #home-page-wrapper {
         grid-template-rows: 6em 2.5fr 1fr 1fr 16em 16em;
@@ -2371,9 +2539,7 @@ and (min-height: 1200px) {
     }
 }
 
-@media only screen
-and (min-width: 3000px)
-and (min-height: 1600px) {
+@media only screen and (min-width: 3000px) and (min-height: 1600px) {
     /* 4K UHD */
 
     #home-page-wrapper {
@@ -2418,9 +2584,7 @@ and (min-height: 1600px) {
 }
 
 /* IPhone Pro 12, landscape */
-@media all
-and (max-height: 428px)
-and (min-width: 500px) {
+@media all and (max-height: 428px) and (min-width: 500px) {
 
     #home-page-wrapper {
         display: grid;
@@ -2473,37 +2637,46 @@ and (min-width: 500px) {
         display: block;
         grid-area: 1 / 1 / 1 / 1;
     }
+
     #data-tile--power {
         /* grid-area: 1 / 1 / 1 / 2; */
         grid-area: 1 / 2 / 1 / 2;
     }
+
     #data-tile--interval-time {
         /* grid-area: 1 / 2 / 1 / 3; */
         grid-area: 1 / 3 / 1 / 3;
     }
+
     #data-tile--heart-rate {
         /* grid-area: 1 / 3 / 1 / 4; */
         grid-area: 1 / 4 / 1 / 4;
     }
+
     #data-tile--slope {
         /* display: none; */
         /* grid-area: 2 / 1 / 2 / 1; */
         display: block;
         grid-area: 2 / 1 / 2 / 1;
     }
+
     #data-tile--target {
         grid-area: 2 / 2 / 2 / 2;
     }
+
     #data-tile--elapsed-time {
         grid-area: 2 / 3 / 2 / 3;
     }
+
     #data-tile--cadence {
         grid-area: 2 / 4 / 2 / 4;
     }
+
     #data-tile--speed {
         /* display: none; */
         grid-area: 1 / 5 / 1 / 5;
     }
+
     #data-tile--distance {
         /* display: none; */
         grid-area: 2 / 5 / 2 / 5;
@@ -2613,9 +2786,7 @@ and (min-width: 500px) {
 }
 
 /* DOCK MOCK (wide and very short) */
-@media all
-and (max-height: 300px)
-and (min-width: 1024px) {
+@media all and (max-height: 300px) and (min-width: 1024px) {
 
     #home-page-wrapper {
         display: grid;
@@ -2640,9 +2811,11 @@ and (min-width: 1024px) {
     .switch--label {
         display: none;
     }
+
     .connection-switch--indicator {
         margin: 0px 1em 0px 0px;
     }
+
     .connection-switch--label {
         display: block;
     }
@@ -2681,32 +2854,41 @@ and (min-width: 1024px) {
         display: block;
         grid-area: 1 / 1 / 1 / 2;
     }
+
     #data-tile--power {
         grid-area: 1 / 2 / 1 / 2;
     }
+
     #data-tile--interval-time {
         grid-area: 1 / 3 / 1 / 3;
     }
+
     #data-tile--heart-rate {
         grid-area: 1 / 4 / 1 / 4;
     }
+
     #data-tile--slope {
         display: block;
         grid-area: 2 / 1 / 2 / 1;
     }
+
     #data-tile--target {
         grid-area: 2 / 2 / 2 / 2;
     }
+
     #data-tile--elapsed-time {
-        grid-area: 2 / 3  / 2 / 3;
+        grid-area: 2 / 3 / 2 / 3;
     }
+
     #data-tile--cadence {
         grid-area: 2 / 4 / 2 / 4;
     }
+
     #data-tile--speed {
         display: block;
         grid-area: 1 / 5 / 1 / 6;
     }
+
     #data-tile--distance {
         display: block;
         grid-area: 2 / 5 / 2 / 6;
@@ -2732,19 +2914,23 @@ and (min-width: 1024px) {
 
         background-color: var(--chrome);
     }
+
     .targets--cont {
         display: grid;
         grid-template-rows: 1fr;
         grid-template-colums: 1fr 1fr;
     }
+
     tab-btn-group {
         grid-area: 1 / 1 / 1 / 1;
     }
+
     tab-group {
         grid-area: 1 / 2 / 1 / 2;
         width: auto;
         padding: 0 0;
     }
+
     .btn {
         /* background-color: var(--dark); */
     }
@@ -2758,7 +2944,7 @@ and (min-width: 1024px) {
         top: 0;
         right: 0;
         width: 12em;
-   }
+    }
 
     .controls {
         width: 50%;
@@ -2801,6 +2987,7 @@ and (min-width: 1024px) {
         float: left;
         width: 50%;
     }
+
     .workout--description {
         float: right;
         width: 50%;
@@ -2808,9 +2995,7 @@ and (min-width: 1024px) {
     }
 }
 
-@media only screen
-and (max-height: 300px)
-and (min-width: 1200px) {
+@media only screen and (max-height: 300px) and (min-width: 1200px) {
 
     #home-page-wrapper {
         /* grid-template-columns: 50px 1fr 2fr 1fr; */
@@ -2863,9 +3048,7 @@ and (min-width: 1200px) {
 
 }
 
-@media only screen
-and (max-height: 300px)
-and (min-width: 1600px) {
+@media only screen and (max-height: 300px) and (min-width: 1600px) {
     .data-tiles {
         font-size: 1.3rem;
         --data-tile--heading-margin: 0 auto 0em;
@@ -2873,9 +3056,7 @@ and (min-width: 1600px) {
 }
 
 
-@media only screen
-and (max-height: 300px)
-and (min-width: 1900px) {
+@media only screen and (max-height: 300px) and (min-width: 1900px) {
 
     .data-tiles {
         font-size: 1.6rem;
@@ -2883,4 +3064,5 @@ and (min-width: 1900px) {
         --data-tile-small--heading-font-size: 0.8em;
     }
 }
+
 /* END Media Queries */
