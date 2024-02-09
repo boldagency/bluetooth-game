@@ -24,7 +24,7 @@ function isUndefined(x) {
 }
 
 function exists(x) {
-    if(isNull(x) || isUndefined(x)) { return false; }
+    if (isNull(x) || isUndefined(x)) { return false; }
     return true;
 }
 
@@ -38,6 +38,8 @@ const GameState = {
 
 const delta = 5;
 
+
+/* ----- WE WILL NOT USE IT -----------*/
 app.post("/race-init", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
@@ -62,7 +64,10 @@ app.post("/race-init", async (req, res) => {
         return res.status(500).send(error);
     }
 });
+/* ----- END WE WILL NOT USE IT -----------*/
 
+
+/* -----  WE WILL RUN IT EVRY TIME WE NEED TO START A NEW GAME -----------*/
 app.post("/race-clean", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
@@ -83,7 +88,11 @@ app.post("/race-clean", async (req, res) => {
         return res.status(500).send(error);
     }
 });
+/* -----  END WE WILL RUN IT EVRY TIME WE NEED TO START A NEW GAME -----------*/
 
+
+
+/* -----  WE WILL RUN IT WHEN WE NEED TO SET PLAYERS NAME -----------*/
 app.post("/race-new", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
@@ -104,7 +113,10 @@ app.post("/race-new", async (req, res) => {
         return res.status(500).send(error);
     }
 });
+/* -----  END WE WILL RUN IT WHEN WE NEED TO SET PLAYERS NAME -----------*/
 
+
+/* -----  WE WILL CALL IT TO UPDATE RPMS -----------*/
 app.post("/set-players", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
@@ -116,7 +128,7 @@ app.post("/set-players", async (req, res) => {
         let p2 = oldval.p2;
         let rpm1 = oldval.rpm1;
         let rpm2 = oldval.rpm2;
-        console.log('rec',data)
+        console.log('rec', data)
 
         if (exists(data.rpm1)) {
             console.log('update rpm1')
@@ -133,10 +145,10 @@ app.post("/set-players", async (req, res) => {
             await currRace.ref.update('state', GameState.Warmup);
         } else if (currState === GameState.Race) {
             if (data.rpm1 && p1 < 100) {
-                await currRace.ref.update('p1', p1 + delta);
+                await currRace.ref.update('p1', p1 + delta); //p1 is progress
             }
             if (data.rpm2 && p2 < 100) {
-                await currRace.ref.update('p2', p2 + delta);
+                await currRace.ref.update('p2', p2 + delta); //p2 is progress
             }
         }
         const updated = currRace.data();
@@ -161,7 +173,10 @@ app.post("/set-players", async (req, res) => {
         return res.status(500).send(error);
     }
 });
+/* -----  END WE WILL CALL IT TO UPDATE RPMS -----------*/
 
+
+/* -----  TO BE CALLED FROM FRONTEND WHEN BOTH ARE PEDDLING AND THE WAITING TIMERS ENDS  -----------*/
 app.post("/start-race", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
@@ -173,7 +188,9 @@ app.post("/start-race", async (req, res) => {
         return res.status(500).send(error);
     }
 });
+/* -----  END TO BE CALLED FROM FRONTEND WHEN BOTH ARE PEDDLING AND THE WAITING TIMERS ENDS  -----------*/
 
+/* -----  TO BE CALLED TO GET WINNER WHEN TIMER ENDS -----------*/
 app.post("/time-up", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
@@ -194,5 +211,6 @@ app.post("/time-up", async (req, res) => {
         return res.status(500).send(error);
     }
 });
+/* -----  END TO BE CALLED TO GET WINNER  -----------*/
 exports.app = functions.https.onRequest(app);
 

@@ -7,6 +7,10 @@ import gsap from "gsap";
 import cx from "classnames";
 import styles from "./SplashContent.module.scss";
 
+import { db } from "@/lib/Fire";
+import { doc, onSnapshot } from "firebase/firestore";
+
+
 export default function SplashContent() {
     const [time, setTime] = useState(null);
     const [navigateToGame, setNavigateToGame] = useState(false);
@@ -29,12 +33,23 @@ export default function SplashContent() {
                 scale: 1,
                 duration: 0.5,
                 onStart: () => {
-                    setTime(10);
+                    //   setTime(10);
                 }
             })
     })
 
     useEffect(() => {
+
+        onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
+            const rec = doc.data();
+            if (rec.state == 1) {
+                setTime(10)
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+
         const counter = setTimeout(() => {
             time > 0 && setTime((time) => time - 1);
         }, 1000);
