@@ -11,10 +11,10 @@ function Driver(args = {}) {
     let _signal = { signal: _abortController.signal };
 
     function getOS() {
-        if(!equals(navigator.appVersion.indexOf('Win'), -1)) return 'windows';
-        if(!equals(navigator.appVersion.indexOf('Mac'), -1)) return 'macos';
-        if(!equals(navigator.appVersion.indexOf('Android'), -1)) return 'android';
-        if(!equals(navigator.appVersion.indexOf('Linux'), -1)) return 'linux';
+        if (!equals(navigator.appVersion.indexOf('Win'), -1)) return 'windows';
+        if (!equals(navigator.appVersion.indexOf('Mac'), -1)) return 'macos';
+        if (!equals(navigator.appVersion.indexOf('Android'), -1)) return 'android';
+        if (!equals(navigator.appVersion.indexOf('Linux'), -1)) return 'linux';
         return 'unknown';
     }
 
@@ -24,24 +24,24 @@ function Driver(args = {}) {
 
         console.log(os);
 
-        if(equals(os, 'windows')) {
+        if (equals(os, 'windows')) {
             // not supported
-            _driver = SerialPolyfillDriver({onData: onRx});
+            _driver = SerialPolyfillDriver({ onData: onRx });
             result = ':success';
             driver = 'serial-polyfill';
         }
-        if(equals(os, 'macos')) {
-            _driver = SerialPolyfillDriver({onData: onRx});
+        if (equals(os, 'macos')) {
+            _driver = SerialPolyfillDriver({ onData: onRx });
             result = ':success';
             driver = 'serial-polyfill';
         }
-        if(equals(os, 'linux')) {
-            _driver = SerialDriver({onData: onRx});
+        if (equals(os, 'linux')) {
+            _driver = SerialDriver({ onData: onRx });
             result = ':success';
             driver = 'web-serial';
         }
-        if(equals(os, 'android')) {
-            _driver = SerialPolyfillDriver({onData: onRx});
+        if (equals(os, 'android')) {
+            _driver = SerialPolyfillDriver({ onData: onRx });
             result = ':success';
             driver = 'serial-polyfill';
         }
@@ -72,13 +72,13 @@ function Driver(args = {}) {
         const antControllable = document.querySelector('#ant-controllable-settings');
         const antHrm = document.querySelector('#ant-hrm-settings');
 
-        if(equals(res.result, ':success')) {
+        if (equals(res.result, ':success')) {
             // Currently only Android has stable support for Web Serial API
-            if(equals(os, 'android')) {
+            if (equals(os, 'android')) {
                 console.log(`:ant :driver :enable '${res.driver}'`);
                 xf.dispatch(`ant:driver:enable`);
-                antControllable.classList.remove('ant-not-supported');
-                antHrm.classList.remove('ant-not-supported');
+                //    antControllable.classList.remove('ant-not-supported');
+                // antHrm.classList.remove('ant-not-supported');
                 start();
             } else {
                 xf.dispatch(`ant:driver:disable`);
@@ -104,7 +104,7 @@ function Driver(args = {}) {
 
     function onSwitch() {
         console.log(`onSwitch() _driver.isOpen(): ${_driver.isOpen()}`);
-        if(_driver.isOpen()) {
+        if (_driver.isOpen()) {
             close();
         } else {
             open();
@@ -132,14 +132,14 @@ function Driver(args = {}) {
 
         console.log(`[${time()}] ant: rx: ${data}`);
 
-        if(equals(channel, 0)) {
-            for(let channel=0; channel<_numOfChannels; channel++) {
+        if (equals(channel, 0)) {
+            for (let channel = 0; channel < _numOfChannels; channel++) {
                 xf.dispatch(`ant:driver:${channel}:rx`,
-                            new DataView(new Uint8Array(data).buffer));
+                    new DataView(new Uint8Array(data).buffer));
             }
         } else {
             xf.dispatch(`ant:driver:${channel}:rx`,
-                        new DataView(new Uint8Array(data).buffer));
+                new DataView(new Uint8Array(data).buffer));
         }
     }
 
