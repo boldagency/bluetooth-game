@@ -136,7 +136,8 @@ export default function GameBodyNew({ user = -1, setWinner }) {
 
     useEffect(() => {
         const isAudioPlaying = audioRef => !!(audioRef.current.currentTime > 0 && !audioRef.current.paused && !audioRef.current.ended && audioRef.current.readyState > 2);
-        if (!isAudioPlaying(audioRef)) {
+
+        if (user === 1 && !isAudioPlaying(audioRef)) {
             audioRef.current.play();
             setIsPlaying(true)
             audioRef.current.muted = false;
@@ -314,12 +315,13 @@ export default function GameBodyNew({ user = -1, setWinner }) {
                     {message}
                 </div>
             }
-            <>
+            {user === 1 &&
                 <audio ref={audioRef} autoPlay={true} loop={true} muted={true}>
                     <source src={"/assets/media/audio/party_dance.mp3"} type="audio/mp3" />
                     Your browser does not support the audio element.
                 </audio>
-            </>
+            }
+
 
         </>
 
