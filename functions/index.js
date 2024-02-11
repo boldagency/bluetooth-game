@@ -115,6 +115,23 @@ app.post("/race-new", async (req, res) => {
 });
 /* -----  END WE WILL RUN IT WHEN WE NEED TO SET PLAYERS NAME -----------*/
 
+app.post("/startTimer", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    try {
+        let data = req.body.timer;
+        //  if (exists(data)) {
+        await (await race.get()).docs[0].ref.update('timer', data);
+
+
+        //  }
+
+        return res.status(200).send("player updated");
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+})
 
 /* -----  WE WILL CALL IT TO UPDATE RPMS -----------*/
 app.post("/set-players", async (req, res) => {
@@ -130,6 +147,10 @@ app.post("/set-players", async (req, res) => {
         let rpm2 = oldval.rpm2;
         console.log('rec', data)
 
+        let isReadyPlayer1 = false;
+        let isReadyPlayer2 = false;
+
+
         if (exists(data.rpm1)) {
             console.log('update rpm1')
             await (await race.get()).docs[0].ref.update('rpm1', data.rpm1);
@@ -140,6 +161,12 @@ app.post("/set-players", async (req, res) => {
         }
 
         if (rpm2 != 0 && currRace.data().state == 0) {
+            isReadyPlayer1 = true;
+        }
+        if (rpm1 != 0 && currRace.data().state == 0) {
+            isReadyPlayer2 = true;
+        }
+        if (isReadyPlayer1 && isReadyPlayer2 && currRace.data().state == 0) {
             await currRace.ref.update('state', 1);
         }
 
@@ -149,15 +176,15 @@ app.post("/set-players", async (req, res) => {
         //     await currRace.ref.update('state', GameState.Warmup);
         // } else 
 
-        if (currState === 1) {
-            if (data.rpm1 && p1 < 100) {
-                await currRace.ref.update('p1', p1 + delta); //p1 is progress
-            }
-            if (data.rpm2 && p2 < 100) {
-                await currRace.ref.update('p2', p2 + delta); //p2 is progress
-            }
-        }
+
         const updated = currRace.data();
+        if (currState === 1) {
+            let progress1 = updated.p1 + updated.rpm1;
+            await currRace.ref.update('p1', updated.p1 + updated.rpm1); //p1 is progress
+            await currRace.ref.update('p2', updated.p2 + updated.rpm2); //p2 is progress
+
+        }
+
         if (updated.state === GameState.Race &&
             (updated.p1 >= 100 || updated.p2 >= 100)) {
             await currRace.ref.update('state', GameState.Finish);

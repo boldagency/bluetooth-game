@@ -101,8 +101,8 @@ export default function GameBodyNew({ user = -1, setWinner }) {
             console.log(333, rec1, rec2);
 
 
-            setUser1rpm(parseInt(rec.rpm1));
-            setUser2rpm(parseInt(rec.rpm2));
+            setUser1rpm(parseInt(rec.p1));
+            setUser2rpm(parseInt(rec.p2));
             setUser1Name(rec.pName1);
             setUser2Name(rec.pName2);
             // setWinner((rec.rpm1 > rec.rpm2) ? 1 : 2)

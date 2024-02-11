@@ -41,6 +41,42 @@ export default function SplashContent({
                     //   setTime(10);
                 }
             })
+
+    }, [])
+
+    useEffect(() => {
+
+        let timer = 10;
+
+        let counter;
+        if (user == 1) {
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            counter = setInterval(() => {
+                timer = timer - 1;
+                if (timer > -1) {
+
+                    console.log(123, timer)
+                    var requestOptions = {
+                        method: 'POST',
+                        redirect: 'follow',
+                        headers: myHeaders,
+                        body: JSON.stringify({ timer: timer }),
+                    };
+
+                    fetch("https://us-central1-bluetooth-race.cloudfunctions.net/app/startTimer", requestOptions)
+                        .then(response => response.text())
+                        .then(result => console.log(222, result))
+                        .catch(error => console.log('error', error));
+
+                    //   setTime(timer)
+                }
+
+            }, 1000)
+        }
+        return () => {
+            clearTimeout(counter)
+        }
     }, [])
 
 
@@ -51,6 +87,7 @@ export default function SplashContent({
                 const rec = doc.data();
                 setUser1Name(rec.pName1);
                 setUser2Name(rec.pName2);
+                setTime(rec.timer)
 
                 if (rec.state == 1 && played == false) {
                     played = true
@@ -64,9 +101,9 @@ export default function SplashContent({
     }, []);
 
     useEffect(() => {
-        const counter = setTimeout(() => {
-            time > 0 && setTime((time) => time - 1);
-        }, 1000);
+        // const counter = setTimeout(() => {
+        //     time > 0 && setTime((time) => time - 1);
+        // }, 1000);
 
         if (time === 0) {
             // setNavigateToGame(true)
@@ -84,9 +121,9 @@ export default function SplashContent({
             })
         }
 
-        return () => {
-            clearTimeout(counter)
-        }
+        // return () => {
+        //     clearTimeout(counter)
+        // }
 
     }, [time]);
 

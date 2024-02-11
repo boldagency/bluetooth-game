@@ -33,7 +33,7 @@ export default function GameCounter({
         if (showGameEnd) {
             onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
                 const rec = doc.data();
-                setWinner((rec.rpm1 > rec.rpm2) ? 1 : 2)
+                setWinner((rec.p1 > rec.p2) ? 1 : 2)
             });
         }
     }, [showGameEnd])
