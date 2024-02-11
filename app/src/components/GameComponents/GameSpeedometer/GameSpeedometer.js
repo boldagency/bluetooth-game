@@ -184,7 +184,7 @@ export default function GameSpeedometer({
             ctx.globalCompositeOperation = 'destination-in';
             ctx.drawImage(ring, cw / 2 - size / 2, ch / 2 - size / 2, size, size);
 
-            console.log(2222, speedCar)
+            console.log(2222, speed)
             if (mph < speed) {
                 mph += 0.0015;
                 (mph > 0.88 && Math.random() > 0.5) ? mph -= 0.002 : mph += 0.0015; // make it quiver at the top end
@@ -199,7 +199,7 @@ export default function GameSpeedometer({
             gsap.to('.needle', { rotation: 40 + mph * 270 })
             gsap.set(props, { hue: () => (mph < 0.9) ? 185 : 10 })
         }
-    }, [speed])
+    })
 
 
     return (

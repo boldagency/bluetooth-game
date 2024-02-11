@@ -23,7 +23,7 @@ export default function GameCounter({
             clearTimeout(counter)
         }
 
-    }, [time]);
+    }, []);
 
     return (
         <div className={cx(styles.counter)}>

@@ -36,16 +36,24 @@ export default function SplashContent() {
                     //   setTime(10);
                 }
             })
-    })
+    }, [])
+
 
     useEffect(() => {
 
-        onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
-            const rec = doc.data();
-            if (rec.state == 1) {
-                setTime(10)
-            }
-        });
+        let played = false;
+        if (played == false) {
+            onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
+                const rec = doc.data();
+                if (rec.state == 1 && played == false) {
+                    played = true
+                    setTime(10)
+                }
+            });
+        }
+        else {
+        }
+
     }, []);
 
     useEffect(() => {
