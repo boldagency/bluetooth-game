@@ -1,15 +1,16 @@
 @import "../../../../styles/abstracts";
 
 .section {
-    height: 100dvh;
+    height: 100vh;
     overflow: hidden;
-    position: relative;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
 
     .sectionIntroContainer {
         height: 100%;
         display: flex;
         flex-direction: column;
-        gap: 15vw;
         position: absolute;
         top: 0;
         inset-inline-start: 0;
@@ -28,7 +29,7 @@
 
             img {
                 width: 100%;
-                height: 100%;
+                height: 120%;
                 object-fit: cover;
             }
         }

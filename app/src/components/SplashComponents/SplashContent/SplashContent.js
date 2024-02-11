@@ -11,9 +11,11 @@ import { db } from "@/lib/Fire";
 import { doc, onSnapshot } from "firebase/firestore";
 
 
-export default function SplashContent() {
+export default function SplashContent({
+    user,
+    setIsGameBodyActive
+}) {
     const [time, setTime] = useState(null);
-    const [navigateToGame, setNavigateToGame] = useState(false);
     const router = useRouter()
     useGSAP(() => {
         const timline = gsap.timeline({}).delay(1)
@@ -57,14 +59,24 @@ export default function SplashContent() {
     }, []);
 
     useEffect(() => {
-
         const counter = setTimeout(() => {
             time > 0 && setTime((time) => time - 1);
         }, 1000);
 
         if (time === 0) {
             // setNavigateToGame(true)
-            router.push("/1")
+            // router.push("/1");
+            gsap.to(`.${styles.section}`, {
+                opacity: 0,
+                duration: 0.5,
+            })
+            gsap.to(`.header`, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    setIsGameBodyActive(true)
+                }
+            })
         }
 
         return () => {
@@ -74,7 +86,7 @@ export default function SplashContent() {
     }, [time]);
 
     return (
-        <div className={cx(styles.section, "text-center")}>
+        <div className={cx(styles.section, "text-center bg-black")}>
             <div className={cx(styles.sectionIntroContainer, "first-section")}>
                 <div className={cx(styles.info, "space-horizontal")}>
                     <h2 className={cx(styles.title)}>Ready to take on the challenge?</h2>
@@ -82,7 +94,11 @@ export default function SplashContent() {
                 </div>
 
                 <div className={cx(styles.background)}>
-                    <img src="/assets/media/site/splash_bg.svg" alt="" />
+                    {user === 1 ?
+                        <img src="/assets/media/site/user1_splash.png" alt="" /> :
+                        <img src="/assets/media/site/user2_splash.png" alt="" />
+                    }
+
                 </div>
             </div>
 

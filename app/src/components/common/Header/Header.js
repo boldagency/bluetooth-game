@@ -3,7 +3,7 @@ import cx from "classnames";
 
 export default function Header() {
     return (
-        <div className={cx(styles.section)}>
+        <div className={cx(styles.section, "header")}>
             <div className={cx(styles.sectionConainer, "space-horizontal")}>
                 <div className={cx(styles.logo)}>
                     <svg width="242" height="37" viewBox="0 0 242 37" fill="none" xmlns="http://www.w3.org/2000/svg">
