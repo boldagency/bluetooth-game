@@ -94,6 +94,7 @@ export default function GameBodyNew({ user = -1, setWinner }) {
         // firestroe
         onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
             const rec = doc.data();
+            console.log(rec)
             rec1 = parseInt(rec.rpm1) / progress_multiplier;
             rec2 = parseInt(rec.rpm2) / progress_multiplier;
             // setSpeedCar(rec2)
