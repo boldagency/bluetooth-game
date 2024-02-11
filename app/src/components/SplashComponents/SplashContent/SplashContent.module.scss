@@ -16,7 +16,7 @@
         inset-inline-start: 0;
         z-index: 4;
 
-        .info {
+        .introInfo {
             flex-grow: 1;
 
             .title {
@@ -36,35 +36,63 @@
 
     }
 
-    .sectionTimerContainer {
+
+    .userInfoWtimer {
         position: absolute;
         top: 0;
         inset-inline-start: 0;
         z-index: 2;
-
         width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 6vw;
+        gap: 20vw;
 
         //to be animated
         opacity: 0;
         transform: scale(0);
 
-
-
-        .numberContainer {
+        .userInfoContainer {
+            padding: 4vw 8vw;
+            border-radius: 2vw;
+            border: 0.15vw solid #6A6A6A;
             display: flex;
-            justify-content: center;
-            gap: 1vw;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4vw;
 
-            .number {
-                line-height: 0.7;
-                font-style: italic;
+            .color {
+                width: 12vw;
+                height: 12vw;
+                border-radius: 1vw;
+            }
+
+            .info {
+                text-align: start;
+
+                .title {
+                    padding-bottom: 2vw;
+                }
+            }
+        }
+
+        .sectionTimerContainer {
+
+            .numberContainer {
+                display: flex;
+                justify-content: center;
+                gap: 1vw;
+                padding-bottom: 4vw;
+
+                .number {
+                    line-height: 0.7;
+                    font-style: italic;
+                }
             }
         }
     }
+
+
 }

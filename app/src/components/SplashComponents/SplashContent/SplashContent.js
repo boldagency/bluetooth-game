@@ -19,7 +19,7 @@ export default function SplashContent({
     const router = useRouter()
     useGSAP(() => {
         const timline = gsap.timeline({}).delay(1)
-            .to(`.${styles.info}`, {
+            .to(`.${styles.introInfo}`, {
                 y: "-100%",
                 duration: 1,
                 opacity: 0
@@ -30,7 +30,7 @@ export default function SplashContent({
                 opacity: 0
             }, "<")
 
-            .to(`.${styles.sectionTimerContainer}`, {
+            .to(`.${styles.userInfoWtimer}`, {
                 opacity: 1,
                 scale: 1,
                 duration: 0.5,
@@ -88,7 +88,7 @@ export default function SplashContent({
     return (
         <div className={cx(styles.section, "text-center bg-black")}>
             <div className={cx(styles.sectionIntroContainer, "first-section")}>
-                <div className={cx(styles.info, "space-horizontal")}>
+                <div className={cx(styles.introInfo, "space-horizontal")}>
                     <h2 className={cx(styles.title)}>Ready to take on the challenge?</h2>
                     <div className={cx(styles.description, "body2-size font-weight-regular")}> Step up and prove your skills in our Galaxy Fitness Game</div>
                 </div>
@@ -102,17 +102,27 @@ export default function SplashContent({
                 </div>
             </div>
 
-            <div className={cx(styles.sectionTimerContainer)}>
-                <div className={cx(styles.numberContainer, "color-blue")}>
-                    <div className={cx(styles.number, "digital1-size")}>{time}</div>
-                    <div className={cx(styles.seconds)}>Sec</div>
+            <div className={cx(styles.userInfoWtimer, "bg-black")}>
+                <div className={cx(styles.userInfoContainer, "bg-gray")}>
+                    <div className={cx(styles.color, user === 1 ? "bg-orange" : "bg-blue")}></div>
+                    <div className={cx(styles.info)}>
+                        <div className={cx(styles.title, "subTitle3-size font-weight-medium")}>You are all set</div>
+                        <div className={cx(styles.name, "subTitle1-size")}>Ahmed Khaled</div>
+                    </div>
                 </div>
+                <div className={cx(styles.sectionTimerContainer)}>
+                    <div className={cx(styles.numberContainer, "color-blue")}>
+                        <div className={cx(styles.number, "digital1-size")}>{time}</div>
+                        <div className={cx(styles.seconds)}>Sec</div>
+                    </div>
 
-                <div className={cx(styles.welcomeText, "subTitle3-siz")}>
-                    Welcome to Galaxy Fitness
+                    <div className={cx(styles.welcomeText, "subTitle3-siz")}>
+                        The race is starting in:
+                    </div>
+
                 </div>
-
             </div>
+
         </div >
     )
 }

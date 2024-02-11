@@ -6,6 +6,8 @@
     --black: #000000;
     --white: #FFFFFF;
     --blue: #2138DF;
+    --gray: #2D2D2D;
+    --orange: #FFA300;
 
     // SPACING
     --spaceX: 4.5vw;
@@ -341,6 +343,10 @@ h6 {
     color: var(--blue);
 }
 
+.color-gray {
+    color: var(--gray);
+}
+
 .color-pink {
     color: var(--pink);
 }
@@ -368,6 +374,10 @@ h6 {
 
 .bg-blue {
     background-color: var(--blue);
+}
+
+.bg-gray {
+    background-color: var(--gray);
 }
 
 .bg-pink {
@@ -398,6 +408,10 @@ h6 {
 
 .border-blue {
     border-color: var(--blue);
+}
+
+.border-gray {
+    border-color: var(--gray);
 }
 
 .border-pink {
@@ -431,6 +445,10 @@ h6 {
 
 .fill-blue {
     fill: var(--blue);
+}
+
+.fill-gray {
+    fill: var(--gray);
 }
 
 .fill-pink {
