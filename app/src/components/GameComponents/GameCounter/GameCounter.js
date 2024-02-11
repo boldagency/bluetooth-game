@@ -2,6 +2,8 @@
 import cx from "classnames";
 import styles from "./GameCounter.module.scss";
 import { useEffect, useState } from "react";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "@/lib/Fire";
 
 
 export default function GameCounter({
@@ -9,7 +11,7 @@ export default function GameCounter({
     setShowGameEnd,
     setWinner
 }) {
-    const [time, setTime] = useState(60);
+    const [time, setTime] = useState(3);
 
     useEffect(() => {
         const counter = setTimeout(() => {
