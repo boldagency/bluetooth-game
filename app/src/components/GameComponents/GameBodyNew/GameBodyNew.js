@@ -73,8 +73,8 @@ export default function GameBodyNew({ user = 1, setWinner }) {
                 gsap.to(p1, { speed: 0, duration: 3 })
             }
 
-            console.log(444, rec2, speedCar)
-            setSpeedCar(p2.speed)
+            // console.log(444, rec2, speedCar)
+            //            setSpeedCar(p2.speed)
 
             if (rec2 > 0) {
                 p2.speed = rec2 / 10;
@@ -97,7 +97,7 @@ export default function GameBodyNew({ user = 1, setWinner }) {
             rec1 = parseInt(rec.rpm1) / progress_multiplier;
             rec2 = parseInt(rec.rpm2) / progress_multiplier;
             // setSpeedCar(rec2)
-            console.log(rec, rec1, rec2);
+            console.log(333, rec1, rec2);
 
 
             setUser1rpm(parseInt(rec.rpm1));
@@ -107,7 +107,7 @@ export default function GameBodyNew({ user = 1, setWinner }) {
             setWinner((rec.rpm1 > rec.rpm2) ? 1 : 2)
 
         });
-    })
+    }, [])
 
     useEffect(() => {
         const interval = setInterval(() => {
