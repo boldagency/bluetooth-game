@@ -66,7 +66,7 @@ export default function GameBodyNew({ user = -1, setWinner }) {
 
 
             if (rec1 > 0) {
-                p1.speed = rec1 / 10;
+                p1.speed = rec1 / 6;
                 gsap.to(p1.tl, { progress: '+=' + p1.speed })
             } else {
                 gsap.to(p1.tl, { progress: '+=' + p1.speed })
@@ -77,7 +77,7 @@ export default function GameBodyNew({ user = -1, setWinner }) {
             //            setSpeedCar(p2.speed)
 
             if (rec2 > 0) {
-                p2.speed = rec2 / 10;
+                p2.speed = rec2 / 6;
 
                 //  gsap.to(p2.tl, { progress: '+=' + rec2 })
                 gsap.to(p2.tl, { progress: '+=' + p2.speed })
