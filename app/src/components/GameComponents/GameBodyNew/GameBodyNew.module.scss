@@ -1,6 +1,6 @@
 .bodyContainer {
     width: 100vw;
-    height: 85vh;
+    height: 86vh;
 
     position: relative;
 
@@ -34,4 +34,19 @@
             object-fit: contain;
         }
     }
+
+}
+
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    min-width: 50%;
+    max-width: 55%;
+    text-align: center;
+    border-radius: 1vw;
+    padding: 4vw 10vw;
+    margin: 4vh auto;
+    height: 8vh;
 }

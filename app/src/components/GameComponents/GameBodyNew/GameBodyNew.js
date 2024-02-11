@@ -11,8 +11,15 @@ import GameSpeedometer from "../GameSpeedometer/GameSpeedometer";
 const progress_multiplier = 5000;
 const speed_multiplier = 5000;
 
-export default function GameBodyNew() {
-    const [speedCar, setSpeedCar] = useState(0)
+export default function GameBodyNew({ user = 1, setWinner }) {
+    const [speedCar, setSpeedCar] = useState(0);
+    const [user1rpm, setUser1rpm] = useState(0);
+    const [user2rpm, setUser2rpm] = useState(0);
+    const [user1Name, setUser1Name] = useState("");
+    const [user2Name, setUser2Name] = useState("");
+    const [message, setMessage] = useState("");
+
+
     useEffect(() => {
         const p1 = { left: 0, right: 0, up: 1, speed: 0, tl: null },
             p2 = { ...p1, speed: 0 }
@@ -91,12 +98,41 @@ export default function GameBodyNew() {
             // setSpeedCar(rec2)
             console.log(rec, rec1, rec2);
 
+
+            setUser1rpm(parseInt(rec.rpm1));
+            setUser2rpm(parseInt(rec.rpm2));
+            setUser1Name(rec.pName1);
+            setUser2Name(rec.pName2);
+            setWinner((rec.rpm1 > rec.rpm2) ? 1 : 2)
+
         });
     })
-    // useEffect(() => {
-    //     // resetRace();
 
-    // }, []);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (user === 1) {
+                if (user1rpm > user2rpm)
+                    setMessage(`Well done ${user1Name}, you're in the lead!`);
+                else
+                    setMessage(`Hurry  up ${user1Name}!`);
+            }
+            else if (user === 2) {
+                if (user2rpm > user1rpm)
+                    setMessage(`Well done ${user2Name}, you're in the lead!`);
+                else
+                    setMessage(`Hurry  up ${user2Name}!`);
+            }
+
+            setTimeout(() => {
+                setMessage(``);
+            }, 3000);
+
+        }, 10000);
+
+        return () => clearInterval(interval);
+    }, [user1Name, user2Name]);
+
+
     return (
         <>
 
@@ -258,7 +294,13 @@ export default function GameBodyNew() {
             </svg> */}
 
             </div>
-            <GameSpeedometer speed={speedCar} />
+            {
+                message &&
+                <div className={cx(styles.message, "bg-blue subTitle2-size font-weight-medium")}>
+                    {message}
+                </div>
+            }
+
         </>
 
     )
