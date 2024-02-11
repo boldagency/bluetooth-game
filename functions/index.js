@@ -139,11 +139,17 @@ app.post("/set-players", async (req, res) => {
             await (await race.get()).docs[0].ref.update('rpm2', data.rpm2);
         }
 
-        if (currState === GameState.Start && (rpm1 === 0 || rpm2 === 0)) {
-            await currRace.ref.update('state', GameState.Waiting);
-        } else if (currState === GameState.Waiting && rpm1 > 0 && rpm2 > 0) {
-            await currRace.ref.update('state', GameState.Warmup);
-        } else if (currState === GameState.Race) {
+        if (rpm2 != 0 && currRace.data().state == 0) {
+            await currRace.ref.update('state', 1);
+        }
+
+        // if (currState === GameState.Start && (rpm1 === 0 || rpm2 === 0)) {
+        //     await currRace.ref.update('state', GameState.Waiting);
+        // } else if (currState === GameState.Waiting && rpm1 > 0 && rpm2 > 0) {
+        //     await currRace.ref.update('state', GameState.Warmup);
+        // } else 
+
+        if (currState === 1) {
             if (data.rpm1 && p1 < 100) {
                 await currRace.ref.update('p1', p1 + delta); //p1 is progress
             }

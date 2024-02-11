@@ -1,6 +1,6 @@
 import cx from "classnames";
 import styles from "./GameBodyNew.module.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
 gsap.registerPlugin(MotionPathPlugin);
@@ -12,6 +12,7 @@ const progress_multiplier = 5000;
 const speed_multiplier = 5000;
 
 export default function GameBodyNew() {
+    const [speedCar, setSpeedCar] = useState(0)
     useEffect(() => {
         const p1 = { left: 0, right: 0, up: 1, speed: 0, tl: null },
             p2 = { ...p1, speed: 0 }
@@ -57,12 +58,22 @@ export default function GameBodyNew() {
                 p1.speed = rec1 / speed_multiplier;
                 gsap.to(p1.tl, { progress: '+=' + rec1 })
             } else {
+                console.log('speed is zero')
+                gsap.to(p1, { speed: 0, duration: 3 })
                 // gsap.to(p1.tl, { progress: '+=' + 0.01 })
             }
+
+            console.log(444, rec2, speedCar)
+            setSpeedCar(p2.speed)
+
             if (rec2 > 0) {
-                p2.speed = rec2 / speed_multiplier;
-                gsap.to(p2.tl, { progress: '+=' + rec2 })
+                p2.speed = rec2 / 10;
+
+                //  gsap.to(p2.tl, { progress: '+=' + rec2 })
+                gsap.to(p2.tl, { progress: '+=' + p2.speed })
             } else {
+                gsap.to(p2.tl, { progress: '+=' + p2.speed })
+                gsap.to(p2, { speed: 0, duration: 3 })
                 // gsap.to(p2.tl, { progress: '+=' + 0.01 })
             }
             // if (f % 9 == 0) gsap.set('.mph', { textContent: (i) => eval('p' + (i + 1)).speed * 11300, snap: 'textContent', ease: 'none' })
@@ -75,6 +86,7 @@ export default function GameBodyNew() {
             const rec = doc.data();
             rec1 = parseInt(rec.rpm1) / progress_multiplier;
             rec2 = parseInt(rec.rpm2) / progress_multiplier;
+            // setSpeedCar(rec2)
             console.log(rec, rec1, rec2);
 
 
@@ -245,7 +257,7 @@ export default function GameBodyNew() {
             </svg> */}
 
             </div>
-            <GameSpeedometer />
+            <GameSpeedometer speed={speedCar} />
         </>
 
     )
