@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 
 
 export default function GameCounter({
-    setShowGameEnd
+    showGameEnd,
+    setShowGameEnd,
+    setWinner
 }) {
     const [time, setTime] = useState(60);
 
@@ -24,6 +26,16 @@ export default function GameCounter({
         }
 
     }, [time]);
+
+    useEffect(() => {
+        if (showGameEnd) {
+            onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
+                const rec = doc.data();
+                setWinner((rec.rpm1 > rec.rpm2) ? 1 : 2)
+            });
+        }
+    }, [showGameEnd])
+
 
     return (
         <div className={cx(styles.counter)}>

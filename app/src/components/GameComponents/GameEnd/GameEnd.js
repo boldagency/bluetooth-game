@@ -3,7 +3,7 @@ import cx from "classnames";
 import styles from "./GameEnd.module.scss";
 import Header from "@/components/common/Header/Header";
 
-export default function GameEnd({ user, winner = 1 }) {
+export default function GameEnd({ user = -1, winner = -1 }) {
     return (
         <>
             <Header />

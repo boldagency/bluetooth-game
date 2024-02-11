@@ -11,7 +11,7 @@ import GameSpeedometer from "../GameSpeedometer/GameSpeedometer";
 const progress_multiplier = 5000;
 const speed_multiplier = 5000;
 
-export default function GameBodyNew({ user = 1, setWinner }) {
+export default function GameBodyNew({ user = -1, setWinner }) {
     const [speedCar, setSpeedCar] = useState(0);
     const [user1rpm, setUser1rpm] = useState(0);
     const [user2rpm, setUser2rpm] = useState(0);
@@ -104,7 +104,7 @@ export default function GameBodyNew({ user = 1, setWinner }) {
             setUser2rpm(parseInt(rec.rpm2));
             setUser1Name(rec.pName1);
             setUser2Name(rec.pName2);
-            setWinner((rec.rpm1 > rec.rpm2) ? 1 : 2)
+            // setWinner((rec.rpm1 > rec.rpm2) ? 1 : 2)
 
         });
     }, [])

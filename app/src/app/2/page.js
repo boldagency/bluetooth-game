@@ -6,14 +6,14 @@ import GameBodyNew from "@/components/GameComponents/GameBodyNew/GameBodyNew";
 
 export default function Home() {
   const [showGameEnd, setShowGameEnd] = useState(false);
-  const [winner, setWinner] = useState(1)
+  const [winner, setWinner] = useState(0)
 
 
   return (
     <>
-      <GameCounter setShowGameEnd={setShowGameEnd} />
+      <GameCounter showGameEnd={showGameEnd} setShowGameEnd={setShowGameEnd} setWinner={setWinner} />
       <GameBodyNew user={2} setWinner={setWinner} />
-      {showGameEnd && <GameEnd user={2} winner={winner} showGameEnd={showGameEnd} />}
+      {showGameEnd && <GameEnd user={2} winner={winner} />}
     </ >
   );
 }

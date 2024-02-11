@@ -11,9 +11,9 @@ export default function Home() {
 
   return (
     <>
-      <GameCounter setShowGameEnd={setShowGameEnd} />
-      <GameBodyNew user={1} setWinner={setWinner} />
-      {showGameEnd && <GameEnd user={1} winner={winner} showGameEnd={showGameEnd} />}
+      <GameCounter showGameEnd={showGameEnd} setShowGameEnd={setShowGameEnd} setWinner={setWinner} />
+      <GameBodyNew user={1} />
+      {showGameEnd && <GameEnd user={1} winner={winner} />}
     </ >
   );
 }
