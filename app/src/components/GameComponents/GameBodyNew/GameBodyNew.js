@@ -55,12 +55,13 @@ export default function GameBodyNew() {
             else gsap.to(p2, { speed: 0, duration: 3 })
 
             if (rec1 > 0) {
-                p1.speed = rec1 / speed_multiplier;
-                gsap.to(p1.tl, { progress: '+=' + rec1 })
+                p1.speed = rec1 / 10;
+
+                //  gsap.to(p2.tl, { progress: '+=' + rec2 })
+                gsap.to(p1.tl, { progress: '+=' + p1.speed })
             } else {
-                console.log('speed is zero')
+                gsap.to(p1.tl, { progress: '+=' + p1.speed })
                 gsap.to(p1, { speed: 0, duration: 3 })
-                // gsap.to(p1.tl, { progress: '+=' + 0.01 })
             }
 
             console.log(444, rec2, speedCar)
@@ -89,9 +90,11 @@ export default function GameBodyNew() {
             // setSpeedCar(rec2)
             console.log(rec, rec1, rec2);
 
+            setSpeedCar(p2.speed)
+
 
         });
-    })
+    }, [])
     // useEffect(() => {
     //     // resetRace();
 
