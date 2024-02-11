@@ -49,7 +49,7 @@ export default function SplashContent({
                 const rec = doc.data();
                 if (rec.state == 1 && played == false) {
                     played = true
-                    setTime(1)
+                    setTime(10)
                 }
             });
         }

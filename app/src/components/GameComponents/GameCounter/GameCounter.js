@@ -11,7 +11,7 @@ export default function GameCounter({
     setShowGameEnd,
     setWinner
 }) {
-    const [time, setTime] = useState(60000);
+    const [time, setTime] = useState(60);
 
     useEffect(() => {
         const counter = setTimeout(() => {
