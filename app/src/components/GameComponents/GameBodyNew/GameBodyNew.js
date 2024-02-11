@@ -44,15 +44,35 @@ export default function GameBodyNew() {
         gsap.to('svg', { opacity: 1, ease: 'power2.inOut' })
         let rec1 = 0;
         let rec2 = 0;
+
+        window.addEventListener("keydown", (e) => { //console.log(e.keyCode)
+            e.preventDefault();
+            if (e.keyCode == 87) p1.up = 1;
+            if (e.keyCode == 38) p2.up = 1;
+        })
+
+
+        window.addEventListener("keyup", (e) => {
+            if (e.keyCode == 87) p1.up = 0;
+            if (e.keyCode == 38) p2.up = 0;
+        })
+
         gsap.ticker.add((t, d, f) => {
             // gsap.to('#pov1', { x: 10, y: 100, duration: 0.1 })
             // gsap.to(`.${styles.svgContainer}.main`, { attr: { viewBox: -0.2 * window.innerWidth / 2 + ' 0 ' + (window.innerWidth / 2) + ' ' + (window.innerHeight / 2) } })
 
             if (p1.up) gsap.to(p1, { speed: p1.speed })
-            else gsap.to(p1, { speed: 0, duration: 3 })
+            else gsap.to(p1, { speed: '-=0.000' + 7, duration: 3 })
 
             if (p2.up) gsap.to(p2, { speed: p2.speed })
-            else gsap.to(p2, { speed: 0, duration: 3 })
+            else gsap.to(p2, { speed: '-=0.000' + 7, duration: 3 })
+
+
+            // if (p1.up) gsap.to(p1, { speed: p1.speed })
+            // else gsap.to(p1, { speed: 0, duration: 3 })
+
+            // if (p2.up) gsap.to(p2, { speed: p2.speed })
+            // else gsap.to(p2, { speed: 0, duration: 3 })
 
             if (rec1 > 0) {
                 p1.speed = rec1 / 10;
