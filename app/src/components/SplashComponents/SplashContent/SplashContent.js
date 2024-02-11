@@ -16,6 +16,9 @@ export default function SplashContent({
     setIsGameBodyActive
 }) {
     const [time, setTime] = useState(null);
+    const [user1Name, setUser1Name] = useState("");
+    const [user2Name, setUser2Name] = useState("");
+
     const router = useRouter()
     useGSAP(() => {
         const timline = gsap.timeline({}).delay(1)
@@ -42,11 +45,13 @@ export default function SplashContent({
 
 
     useEffect(() => {
-
         let played = false;
         if (played == false) {
             onSnapshot(doc(db, "race", "Vdj9u6L1WiOPA8nwLmxW"), (doc) => {
                 const rec = doc.data();
+                setUser1Name(rec.pName1);
+                setUser2Name(rec.pName2);
+
                 if (rec.state == 1 && played == false) {
                     played = true
                     setTime(10)
@@ -107,7 +112,7 @@ export default function SplashContent({
                     <div className={cx(styles.color, user === 1 ? "bg-orange" : "bg-blue")}></div>
                     <div className={cx(styles.info)}>
                         <div className={cx(styles.title, "subTitle3-size font-weight-medium")}>You are all set</div>
-                        <div className={cx(styles.name, "subTitle1-size")}>Ahmed Khaled</div>
+                        <div className={cx(styles.name, "subTitle1-size")}>{user === 1 ? user1Name : user2Name}</div>
                     </div>
                 </div>
                 <div className={cx(styles.sectionTimerContainer)}>
