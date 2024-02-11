@@ -1,6 +1,6 @@
 import cx from "classnames";
 import styles from "./GameBodyNew.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
 gsap.registerPlugin(MotionPathPlugin);
@@ -18,7 +18,8 @@ export default function GameBodyNew({ user = 1, setWinner }) {
     const [user1Name, setUser1Name] = useState("");
     const [user2Name, setUser2Name] = useState("");
     const [message, setMessage] = useState("");
-
+    const [isPlaying, setIsPlaying] = useState(true);
+    const audioRef = useRef()
 
     useEffect(() => {
         const p1 = { left: 0, right: 0, up: 1, speed: 0, tl: null },
@@ -132,10 +133,18 @@ export default function GameBodyNew({ user = 1, setWinner }) {
         return () => clearInterval(interval);
     }, [user1Name, user2Name]);
 
+    useEffect(() => {
+        const isAudioPlaying = audioRef => !!(audioRef.current.currentTime > 0 && !audioRef.current.paused && !audioRef.current.ended && audioRef.current.readyState > 2);
+        if (!isAudioPlaying(audioRef)) {
+            audioRef.current.play();
+            setIsPlaying(true)
+            audioRef.current.muted = false;
+        }
+    }, [])
+
 
     return (
         <>
-
             <div className={cx(styles.bodyContainer)}>
                 <svg className={cx(styles.svgContainer)} style={{ opacity: 0 }} width="724" height="1446" viewBox="0 0 724 1446" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -300,6 +309,12 @@ export default function GameBodyNew({ user = 1, setWinner }) {
                     {message}
                 </div>
             }
+            <>
+                <audio ref={audioRef} autoPlay={true} loop={true} muted={true}>
+                    <source src={"/assets/media/audio/party_dance.mp3"} type="audio/mp3" />
+                    Your browser does not support the audio element.
+                </audio>
+            </>
 
         </>
 
