@@ -18,38 +18,41 @@ export default function SplashContent({
     const [time, setTime] = useState(null);
     const [user1Name, setUser1Name] = useState("");
     const [user2Name, setUser2Name] = useState("");
+    const [state, setState] = useState(0)
 
     const router = useRouter()
     useGSAP(() => {
-        const timline = gsap.timeline({}).delay(1)
-            .to(`.${styles.introInfo}`, {
-                y: "-100%",
-                duration: 1,
-                opacity: 0
-            })
-            .to(`.${styles.background}`, {
-                y: "100%",
-                duration: 1,
-                opacity: 0
-            }, "<")
+        if (state == 1) {
+            const timline = gsap.timeline({}).delay(1)
+                .to(`.${styles.introInfo}`, {
+                    y: "-100%",
+                    duration: 1,
+                    opacity: 0
+                })
+                .to(`.${styles.background}`, {
+                    y: "100%",
+                    duration: 1,
+                    opacity: 0
+                }, "<")
 
-            .to(`.${styles.userInfoWtimer}`, {
-                opacity: 1,
-                scale: 1,
-                duration: 0.5,
-                onStart: () => {
-                    //   setTime(10);
-                }
-            })
+                .to(`.${styles.userInfoWtimer}`, {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 0.5,
+                    onStart: () => {
+                        //   setTime(10);
+                    }
+                })
+        }
 
-    }, [])
+    }, [state])
 
     useEffect(() => {
 
         let timer = 10;
 
         let counter;
-        if (user == 1) {
+        if (user == 1 && state == 1) {
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
             counter = setInterval(() => {
@@ -77,7 +80,7 @@ export default function SplashContent({
         return () => {
             clearTimeout(counter)
         }
-    }, [])
+    }, [state])
 
 
     useEffect(() => {
@@ -87,7 +90,12 @@ export default function SplashContent({
                 const rec = doc.data();
                 setUser1Name(rec.pName1);
                 setUser2Name(rec.pName2);
-                setTime(rec.timer)
+
+                setState(rec.state)
+
+                if (rec.state == 1) {
+                    setTime(rec.timer)
+                }
 
                 if (rec.state == 1 && played == false) {
                     played = true
@@ -105,7 +113,7 @@ export default function SplashContent({
         //     time > 0 && setTime((time) => time - 1);
         // }, 1000);
 
-        if (time === 0) {
+        if (time === 0 && state == 1) {
             // setNavigateToGame(true)
             // router.push("/1");
             gsap.to(`.${styles.section}`, {
@@ -126,6 +134,10 @@ export default function SplashContent({
         // }
 
     }, [time]);
+
+
+
+
 
     return (
         <div className={cx(styles.section, "text-center bg-black")}>

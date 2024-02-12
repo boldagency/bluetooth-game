@@ -4,8 +4,31 @@ import styles from "./GameEnd.module.scss";
 import Header from "@/components/common/Header/Header";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useEffect } from "react";
 
-export default function GameEnd({ user = -1, winner = -1 }) {
+export default function GameEnd({ user = -1, winner = -1, setIsGameBodyActive }) {
+
+    let resetGame = () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var requestOptions = {
+            method: 'POST',
+            redirect: 'follow',
+            headers: myHeaders,
+        };
+
+        fetch("https://us-central1-bluetooth-race.cloudfunctions.net/app/race-clean", requestOptions)
+            .then(response => response.text())
+            .then(result => { console.log(222, result); location.reload(); })
+            .catch(error => console.log('error', error));
+
+        //   setTime(timer)
+
+
+
+
+    }
     useGSAP(() => {
         gsap.to(`.${styles.patternTop}`, {
             top: 0,
@@ -16,6 +39,15 @@ export default function GameEnd({ user = -1, winner = -1 }) {
             duration: 2,
         }, "<")
     }, { dependencies: [winner] })
+
+    useEffect(() => {
+        setTimeout(() => {
+            resetGame();
+            // location.reload();
+        }, 3000)
+    }, [])
+
+
 
     return (
         <>

@@ -79,7 +79,8 @@ app.post("/race-clean", async (req, res) => {
             winner: 0,
             pName1: "",
             pName2: "",
-            state: GameState.Start
+            timer: 10,
+            state: 0
         });
         return res.status(200).send("Game clean success");
     }
