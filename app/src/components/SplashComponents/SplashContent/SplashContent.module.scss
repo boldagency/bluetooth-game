@@ -1,7 +1,7 @@
 @import "../../../../styles/abstracts";
 
 .section {
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
     position: absolute;
     width: 100%;
@@ -20,12 +20,12 @@
             flex-grow: 1;
 
             .title {
-                padding-bottom: 4vw;
+                padding-bottom: 4vh;
             }
         }
 
         .background {
-            min-height: 70vh;
+            min-height: 70vw;
 
             img {
                 width: 100%;
@@ -48,32 +48,32 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 10vw;
+        gap: 10vh;
 
         //to be animated
         opacity: 0;
         transform: scale(0);
 
         .userInfoContainer {
-            padding: 4vw 8vw;
-            border-radius: 2vw;
-            border: 0.15vw solid #6A6A6A;
+            padding: 4vh 8vh;
+            border-radius: 2vh;
+            border: 0.15vh solid #6A6A6A;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 4vw;
+            gap: 4vh;
 
             .color {
-                width: 12vw;
-                height: 12vw;
-                border-radius: 1vw;
+                width: 12vh;
+                height: 12vh;
+                border-radius: 1vh;
             }
 
             .info {
                 text-align: start;
 
                 .title {
-                    padding-bottom: 2vw;
+                    padding-bottom: 2vh;
                 }
             }
         }
@@ -88,8 +88,8 @@
             .numberContainer {
                 display: flex;
                 justify-content: center;
-                gap: 1vw;
-                padding-bottom: 4vw;
+                gap: 1vh;
+                padding-bottom: 4vh;
 
                 .number {
                     line-height: 0.7;
@@ -98,10 +98,10 @@
             }
 
             .circle {
-                width: 50vw;
-                height: 50vw;
+                width: 50vh;
+                height: 50vh;
                 border-radius: 50%;
-                margin-bottom: 6vw;
+                margin-bottom: 6vh;
                 animation: heart .3s infinite alternate;
             }
         }

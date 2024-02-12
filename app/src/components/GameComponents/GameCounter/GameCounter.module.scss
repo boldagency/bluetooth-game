@@ -2,8 +2,8 @@
 
 .counter {
     position: fixed;
-    top: 4vw;
-    inset-inline-start: 4vw;
+    top: 4vh;
+    inset-inline-start: 4vh;
     width: fit-content;
 
     .counterContainer {
@@ -11,9 +11,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        min-width: 20vw;
-        padding: 2vw;
-        border-radius: 2vw;
+        min-width: 20vh;
+        padding: 2vh;
+        border-radius: 2vh;
 
         .counterNumber {}
     }
