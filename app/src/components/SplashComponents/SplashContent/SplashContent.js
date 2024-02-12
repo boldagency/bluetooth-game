@@ -99,7 +99,7 @@ export default function SplashContent({
 
                 if (rec.state == 1 && played == false) {
                     played = true
-                    setTime(10)
+                    setTime(4)
                 }
             });
         }
@@ -165,13 +165,15 @@ export default function SplashContent({
                     </div>
                 </div>
                 <div className={cx(styles.sectionTimerContainer)}>
-                    <div className={cx(styles.numberContainer, "color-blue")}>
+                    {/* <div className={cx(styles.numberContainer, "color-blue")}>
                         <div className={cx(styles.number, "digital1-size")}>{time}</div>
                         <div className={cx(styles.seconds)}>Sec</div>
-                    </div>
+                    </div> */}
+
+                    <div className={cx(styles.circle, user === 1 ? "bg-orange" : "bg-blue")}></div>
 
                     <div className={cx(styles.welcomeText, "subTitle3-siz")}>
-                        The race is starting in:
+                        The race is starting soon, please start paddling
                     </div>
 
                 </div>

@@ -48,7 +48,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 20vw;
+        gap: 10vw;
 
         //to be animated
         opacity: 0;
@@ -79,6 +79,11 @@
         }
 
         .sectionTimerContainer {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+
 
             .numberContainer {
                 display: flex;
@@ -91,8 +96,22 @@
                     font-style: italic;
                 }
             }
+
+            .circle {
+                width: 50vw;
+                height: 50vw;
+                border-radius: 50%;
+                margin-bottom: 6vw;
+                animation: heart .3s infinite alternate;
+            }
         }
     }
 
 
+}
+
+@keyframes heart {
+    to {
+        transform: scale(1.1);
+    }
 }
