@@ -31,7 +31,7 @@ export default function GameBodyNew({ user = -1, setWinner }) {
                 motionPath: {
                     path: '#track',
                     align: '#track',
-                    alignOrigin: [0.5, 0],
+                    alignOrigin: [0.5, 0.5],
                     autoRotate: true
                 }
             })
@@ -43,7 +43,7 @@ export default function GameBodyNew({ user = -1, setWinner }) {
                 motionPath: {
                     path: '#track',
                     align: '#track',
-                    alignOrigin: [0.5, 1],
+                    alignOrigin: [0.5, 0.5],
                     autoRotate: true
                 }
             })
@@ -275,24 +275,23 @@ export default function GameBodyNew({ user = -1, setWinner }) {
                             <path d="M211.797 1067.73L208.504 1070.32L210.977 1073.46L214.271 1070.87L211.797 1067.73Z" fill="white" stroke="white" stroke-width="0.11" stroke-miterlimit="10" />
                             <path d="M208.508 1070.31L205.214 1072.91L207.688 1076.05L210.981 1073.46L208.508 1070.31Z" fill="#231F20" stroke="white" stroke-width="0.11" stroke-miterlimit="10" />
 
-
-                            <g className="car1Group">
-                                <g className={cx(styles.carGroup, "car1")}>
-                                    <Car1 className={cx(styles.carSvg)} />
-                                    {/* <img src="/assets/media/site/car_2.svg" alt="" /> */}
-                                    {/* <path fill="#f0a" d="M12,2c0,0,6.5-1,9.8,0S40,2,49,2.5S58.8,3,61.9,3S67,1,74,2s11,5,13,6s3,23,1,25s-9,7-17,7s-3-1-9-1s-17,1-25,0s-14,0-17,0s-9,1-14-4S1,23.7,1,20.9S1,11,4,8S10,2,12,2z" />
+                            {
+                                user === 1 ? <g className="car1Group">
+                                    <g className={cx(styles.carGroup, "car1")}>
+                                        <Car1 className={cx(styles.carSvg)} />
+                                        {/* <img src="/assets/media/site/car_2.svg" alt="" /> */}
+                                        {/* <path fill="#f0a" d="M12,2c0,0,6.5-1,9.8,0S40,2,49,2.5S58.8,3,61.9,3S67,1,74,2s11,5,13,6s3,23,1,25s-9,7-17,7s-3-1-9-1s-17,1-25,0s-14,0-17,0s-9,1-14-4S1,23.7,1,20.9S1,11,4,8S10,2,12,2z" />
                                     <use href="#carImg" /> */}
-                                </g>
-                            </g>
-
-                            <g className="car2Group">
-                                <g className={cx(styles.carGroup, "car2")}>
-                                    <Car2 />
-                                    {/* <img src="/assets/media/site/car_1.svg" alt="" /> */}
-                                    {/* <path fill="#0af" d="M12,2c0,0,6.5-1,9.8,0S40,2,49,2.5S58.8,3,61.9,3S67,1,74,2s11,5,13,6s3,23,1,25s-9,7-17,7s-3-1-9-1s-17,1-25,0s-14,0-17,0s-9,1-14-4S1,23.7,1,20.9S1,11,4,8S10,2,12,2z" />
+                                    </g>
+                                </g> : <g className="car2Group">
+                                    <g className={cx(styles.carGroup, "car2")}>
+                                        <Car2 />
+                                        {/* <img src="/assets/media/site/car_1.svg" alt="" /> */}
+                                        {/* <path fill="#0af" d="M12,2c0,0,6.5-1,9.8,0S40,2,49,2.5S58.8,3,61.9,3S67,1,74,2s11,5,13,6s3,23,1,25s-9,7-17,7s-3-1-9-1s-17,1-25,0s-14,0-17,0s-9,1-14-4S1,23.7,1,20.9S1,11,4,8S10,2,12,2z" />
                                     <use href="#carImg" /> */}
+                                    </g>
                                 </g>
-                            </g>
+                            }
                         </g>
                     </g>
                 </svg>
