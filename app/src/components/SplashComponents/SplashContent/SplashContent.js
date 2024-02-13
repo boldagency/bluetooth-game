@@ -49,7 +49,7 @@ export default function SplashContent({
 
     useEffect(() => {
 
-        let timer = 10;
+        let timer = 4;
 
         let counter;
         if (user == 1 && state == 1) {
