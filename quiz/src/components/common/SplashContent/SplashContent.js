@@ -1,31 +1,16 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useGSAP } from "@gsap/react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import gsap from "gsap";
 import cx from "classnames";
 import styles from "./SplashContent.module.scss";
 
 export default function SplashContent() {
     const router = useRouter();
-
-    useGSAP(() => {
-        const timline = gsap.timeline({}).delay(2)
-            .to(`.${styles.info}`, {
-                y: "-100%",
-                duration: 1,
-                opacity: 0
-            })
-            .to(`.${styles.bg}`, {
-                y: "100%",
-                duration: 1,
-                opacity: 0,
-                onComplete: () => {
-                    router.push("/quiz")
-                }
-            }, "<")
+    useEffect(() => {
+        setTimeout(() => {
+            router.push("/quiz")
+        }, 3000)
     })
-
     return (
         <div className={cx(styles.section)}>
             <div className={cx(styles.sectionContainer)}>
