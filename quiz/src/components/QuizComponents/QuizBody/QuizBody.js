@@ -32,7 +32,7 @@ export default function QuizBody() {
     let inputRef = useRef();
     const router = useRouter();
     const [inactiveTimer, setInactiveTimer] = useState(120000)
-    const [showCongrats, setShowCongrats,] = useState(true);
+    const [showCongrats, setShowCongrats,] = useState(false);
 
     useEffect(() => {
         let timer;
@@ -85,6 +85,9 @@ export default function QuizBody() {
 
                 setSubmitValue("");
                 setCurrentQuestion(p => p + 1);
+            }
+            else {
+                setShowCongrats(true)
             }
         }
 
