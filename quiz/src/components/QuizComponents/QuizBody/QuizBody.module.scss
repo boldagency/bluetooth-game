@@ -1,0 +1,72 @@
+@import "../../../../styles/abstracts";
+
+.section {
+    padding-top: 4vw;
+    height: 100vh;
+
+    .sectionContainer {
+        height: 100%;
+
+        .questionContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4vw;
+            height: 100%;
+
+            .question {}
+
+
+            .questionInput {
+                width: 100%;
+
+                input {
+                    width: 100%;
+                    background: transparent;
+                    outline: none;
+                    padding: 2vw;
+                    min-height: 8vw;
+                    border: 0.05vw solid rgba(255, 255, 255, 0.245);
+                    color: var(--white);
+                    font-size: 4vw;
+                    border-radius: 1vw;
+                }
+            }
+
+            .questionImg {
+                width: 100%;
+                height: 40vw;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .questionSubmit {
+                width: 100%;
+                text-align: center;
+                padding: 2vw;
+                padding-top: 3vw;
+                cursor: pointer;
+                background-color: var(--blue);
+                font-size: 4vw;
+                border-radius: 1vw;
+            }
+        }
+    }
+}
+
+.successPopup,
+.failsPopup {
+    position: fixed;
+    top: 0;
+    inset-inline-start: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
