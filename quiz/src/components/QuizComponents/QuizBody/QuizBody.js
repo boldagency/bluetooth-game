@@ -42,7 +42,7 @@ export default function QuizBody() {
     }
 
     const checkAnswer = (exactAns, userAns) => {
-        if (userAns === exactAns) return true;
+        if (userAns.toLowerCase() === exactAns.toLowerCase()) return true;
         else return false
     }
 
