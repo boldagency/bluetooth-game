@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import styles from "./QuizBody.module.scss";
+import { useRouter } from "next/navigation";
 
 const questionsList = [
     {
@@ -27,9 +28,38 @@ export default function QuizBody() {
     const [submitValue, setSubmitValue] = useState("");
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [showFailsPopup, setShowFailsPopup,] = useState(false);
+    let inputRef = useRef();
+    const router = useRouter();
+    const [inactiveTimer, setInactiveTimer] = useState(120000)
 
     useEffect(() => {
+        let timer;
 
+        timer = setTimeout(() => {
+            userInactiveRedirect();
+        }, inactiveTimer);
+
+
+
+        // const waitTime = 1000;
+
+        //  const messageInput = document.getElementById('message');
+
+        inputRef.current.addEventListener('keydown', event => {
+            clearTimeout(timer);
+        })
+
+        inputRef.current.addEventListener('keyup', event => {
+            clearTimeout(timer);
+
+            timer = setTimeout(() => {
+                userInactiveRedirect();
+            }, inactiveTimer);
+        });
+
+        let userInactiveRedirect = () => {
+            router.push("/")
+        }
     }, [])
 
     const questionSubmit = (exactAns, userAns, isLastQuestion) => {
@@ -85,7 +115,7 @@ export default function QuizBody() {
                                     <h5 className={cx(styles.question, "")}>{question}</h5>
                                     <div className={cx(styles.fieldsContainer)}>
                                         <div className={cx(styles.questionInput, "")}>
-                                            <input value={submitValue} onInput={(e) => setSubmitValue(e.target.value)} type="text" />
+                                            <input ref={inputRef} value={submitValue} onInput={(e) => setSubmitValue(e.target.value)} type="text" />
                                         </div>
                                         <button
                                             onClick={
