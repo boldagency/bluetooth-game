@@ -11,8 +11,8 @@ const questionsList = [
         answer: "Egyptian Mau",
     },
     {
-        question: "What is the full birth name of Post Malone?",
-        answer: "Austin Richard Post",
+        question: "How many Post Malone album records were sold?",
+        answer: "80 million",
     },
     {
         question: "At what time did khalid make a reservation at the restaurant?",
