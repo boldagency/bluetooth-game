@@ -15,11 +15,11 @@ export default function SplashContent() {
             <div className={cx(styles.sectionContainer)}>
                 <div className={cx(styles.info, "space-horizontal")}>
                     <h1 className={cx(styles.title)}>
-                        Circle to search
+                        Welcome to the Galaxy AI Challenge
                     </h1>
-                    <div className={cx(styles.description, "body1-size font-weight-regular")}>
-                        Look up something you can’t describe
-                    </div>
+                    {/* <div className={cx(styles.description, "body1-size font-weight-regular")}>
+                        Start the experience to discover the power of AI
+                    </div> */}
                     <button onClick={startQuiz} className={cx(styles.startBtn, "subTitle3-size color-white")}>
                         Start
                     </button>
