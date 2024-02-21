@@ -123,7 +123,13 @@ export default function QuizBody() {
                                     <h5 className={cx(styles.question, "")}>{question}</h5>
                                     <div className={cx(styles.fieldsContainer)}>
                                         <div className={cx(styles.questionInput, "")}>
-                                            <input ref={inputRef} value={submitValue} onInput={(e) => setSubmitValue(e.target.value)} type="text" />
+                                            <input
+                                                type="text"
+                                                placeholder="Type your answer here"
+                                                ref={inputRef}
+                                                value={submitValue}
+                                                onInput={(e) => setSubmitValue(e.target.value)}
+                                            />
                                         </div>
                                         <button
                                             onClick={
