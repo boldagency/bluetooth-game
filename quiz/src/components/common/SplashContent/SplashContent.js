@@ -10,7 +10,7 @@ export default function SplashContent() {
         setTimeout(() => {
             router.push("/quiz")
         }, 3000)
-    })
+    }, [])
     return (
         <div className={cx(styles.section)}>
             <div className={cx(styles.sectionContainer)}>
