@@ -18,10 +18,6 @@ const questionsList = [
         question: "At what time did khalid make a reservation at the restaurant?",
         answer: "8pm",
     },
-    {
-        question: "Question 4 Title",
-        answer: "ans4",
-    },
 ]
 
 export default function QuizBody() {
@@ -87,7 +83,14 @@ export default function QuizBody() {
                 setCurrentQuestion(p => p + 1);
             }
             else {
-                setShowCongrats(true)
+                setTimeout(() => {
+                    setShowSuccessPopup(false)
+                    setShowCongrats(true)
+                    setTimeout(() => {
+                        router.push("/")
+                    }, 2000);
+                }, 2000);
+                setSubmitValue("");
             }
         }
 
