@@ -3,7 +3,7 @@
 .section {
     height: calc(100vh - 8vw);
     overflow: hidden;
-    padding-top: 5vw;
+    padding-top: 2vw;
 
     .sectionContainer {
         height: 100%;
@@ -25,7 +25,7 @@
             .startBtn {
                 background-color: var(--blue);
                 border-radius: 18px;
-                padding: 2vw 4vw 1.6vw 4vw;
+                padding: 1.5vw 4vw 1.5vw 4vw;
                 margin-top: 2vw;
             }
         }

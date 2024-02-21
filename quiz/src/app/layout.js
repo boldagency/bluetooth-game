@@ -5,9 +5,9 @@ import '../../styles/globals.scss';
 const samsungFont = localFont(
   {
     src: [
-      { path: '../assets/fonts/samsung-font/Samsung Sharp Sans Regular Regular.ttf', style: 'normal', weight: '400' },
-      { path: '../assets/fonts/samsung-font/Samsung Sharp Sans Medium Regular.ttf', style: 'normal', weight: '600' },
-      { path: '../assets/fonts/samsung-font/Samsung Sharp Sans Medium Regular.ttf', style: 'normal', weight: '700' },
+      { path: '../assets/fonts/samsung-font/sanss___.ttf', style: 'normal', weight: '400' },
+      // { path: '../assets/fonts/samsung-font/Samsung Sharp Sans Medium Regular.ttf', style: 'normal', weight: '600' },
+      // { path: '../assets/fonts/samsung-font/Samsung Sharp Sans Medium Regular.ttf', style: 'normal', weight: '700' },
     ],
     variable: '--samsung-font'
   }
