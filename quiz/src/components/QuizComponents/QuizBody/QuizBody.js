@@ -8,22 +8,18 @@ const questionsList = [
     {
         question: "What is the name of the breed of this cat?",
         answer: "Egyptian Mau",
-        image: "/assets/media/question1_img.jpg"
     },
     {
         question: "What is the full birth name of Post Malone?",
         answer: "Austin Richard Post",
-        image: "/assets/media/question1_img.jpg"
     },
     {
         question: "At what time did khalid make a reservation at the restaurant?",
         answer: "8pm",
-        image: "/assets/media/question1_img.jpg"
     },
     {
         question: "Question 4 Title",
         answer: "ans4",
-        image: "/assets/media/question1_img.jpg"
     },
 ]
 
@@ -44,7 +40,7 @@ export default function QuizBody() {
     }
 
     const checkAnswer = (exactAns, userAns) => {
-        if (userAns === exactAns) return true;
+        if (userAns.toLowerCase() === exactAns.toLowerCase()) return true;
         else return false
     }
 
@@ -65,14 +61,14 @@ export default function QuizBody() {
         else {
             setShowFailsPopup(true)
 
-            if (!isLastQuestion) {
-                setTimeout(() => {
-                    setShowFailsPopup(false);
-                }, 2000);
+            //if (!isLastQuestion) {
+            setTimeout(() => {
+                setShowFailsPopup(false);
+            }, 2000);
 
-                setSubmitValue("");
-                setCurrentQuestion(p => p + 1);
-            }
+            setSubmitValue("");
+            setCurrentQuestion(p => p);
+            //  }
         }
     }
 
@@ -87,9 +83,7 @@ export default function QuizBody() {
                         questionsList.map(({ question, answer, image }, index) => {
                             return currentQuestion === index &&
                                 <div className={cx(styles.questionContainer)}>
-                                    <div className={cx(styles.questionImg)}>
-                                        <img src={image} alt="" />
-                                    </div>
+
                                     <h5 className={cx(styles.question, "")}>{question}</h5>
                                     <div className={cx(styles.fieldsContainer)}>
                                         <div className={cx(styles.questionInput, "")}>
