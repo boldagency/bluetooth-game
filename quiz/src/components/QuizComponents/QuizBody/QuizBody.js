@@ -69,7 +69,7 @@ export default function QuizBody() {
                 }, 2000);
 
                 setSubmitValue("");
-                setCurrentQuestion(p => p + 1);
+                setCurrentQuestion(p => p);
             }
         }
     }
