@@ -5,18 +5,18 @@ import styles from "./QuizBody.module.scss";
 
 const questionsList = [
     {
-        question: "Question 1 Title",
-        answer: "ans1",
+        question: "What is the name of the breed of this cat?",
+        answer: "Egyptian Mau",
         image: "/assets/media/question1_img.jpg"
     },
     {
-        question: "Question 2 Title",
-        answer: "ans2",
+        question: "What is the full birth name of Post Malone?",
+        answer: "Austin Richard Post",
         image: "/assets/media/question1_img.jpg"
     },
     {
-        question: "Question 3 Title",
-        answer: "ans3",
+        question: "At what time did khalid make a reservation at the restaurant?",
+        answer: "8pm",
         image: "/assets/media/question1_img.jpg"
     },
     {
@@ -51,9 +51,9 @@ export default function QuizBody() {
             setShowSuccessPopup(true)
 
             if (!isLastQuestion) {
-                // setTimeout(() => {
-                //     setShowSuccessPopup(false)
-                // }, 2000);
+                setTimeout(() => {
+                    setShowSuccessPopup(false)
+                }, 2000);
 
                 setSubmitValue("");
                 setCurrentQuestion(p => p + 1);
@@ -64,9 +64,9 @@ export default function QuizBody() {
             setShowFailsPopup(true)
 
             if (!isLastQuestion) {
-                // setTimeout(() => {
-                //     setShowFailsPopup(false);
-                // }, 2000);
+                setTimeout(() => {
+                    setShowFailsPopup(false);
+                }, 2000);
 
                 setSubmitValue("");
                 setCurrentQuestion(p => p + 1);
@@ -88,7 +88,7 @@ export default function QuizBody() {
                                     <div className={cx(styles.questionImg)}>
                                         <img src={image} alt="" />
                                     </div>
-                                    <h4 className={cx(styles.question, "")}>{question}</h4>
+                                    <h5 className={cx(styles.question, "")}>{question}</h5>
                                     <div className={cx(styles.fieldsContainer)}>
                                         <div className={cx(styles.questionInput, "")}>
                                             <input value={submitValue} onInput={(e) => setSubmitValue(e.target.value)} type="text" />

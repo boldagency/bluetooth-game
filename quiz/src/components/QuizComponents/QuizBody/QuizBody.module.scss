@@ -14,6 +14,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
             gap: 8%;
             width: 100%;
 
@@ -111,6 +112,7 @@
             background-color: var(--blue);
             border-radius: 0.5vw;
             padding: 2vw 6vw;
+            pointer-events: none;
         }
     }
 
