@@ -63,14 +63,14 @@ export default function QuizBody() {
         else {
             setShowFailsPopup(true)
 
-            if (!isLastQuestion) {
-                setTimeout(() => {
-                    setShowFailsPopup(false);
-                }, 2000);
+            //if (!isLastQuestion) {
+            setTimeout(() => {
+                setShowFailsPopup(false);
+            }, 2000);
 
-                setSubmitValue("");
-                setCurrentQuestion(p => p);
-            }
+            setSubmitValue("");
+            setCurrentQuestion(p => p);
+            //  }
         }
     }
 
