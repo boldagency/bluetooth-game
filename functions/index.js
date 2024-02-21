@@ -101,7 +101,11 @@ app.post("/race-new", async (req, res) => {
         if (data.pName1 && data.pName2) {
             await (await race.get()).docs[0].ref.update({
                 pName1: data.pName1,
-                pName2: data.pName2
+                pName2: data.pName2,
+                p1: 0,
+                p2: 0,
+                rpm1: 0,
+                rpm2: 0
             });
             return res.status(200).send("players name updated");
         } else {
@@ -167,7 +171,7 @@ app.post("/set-players", async (req, res) => {
         if (rpm1 != 0 && currRace.data().state == 0) {
             isReadyPlayer2 = true;
         }
-        if (isReadyPlayer1 && isReadyPlayer2 && currRace.data().state == 0) {
+        if (isReadyPlayer1 && isReadyPlayer2 && currRace.data().state == 0 && currRace.data().pName1 != '' && currRace.data().pName2 != '') {
             await currRace.ref.update('state', 1);
         }
 
