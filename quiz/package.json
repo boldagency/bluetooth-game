@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "firebase-deploy": "firebase deploy --only hosting:samsung-quiz"
   },
   "dependencies": {
     "@gsap/react": "^2.1.0",
