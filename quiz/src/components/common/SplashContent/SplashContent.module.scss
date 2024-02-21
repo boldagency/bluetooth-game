@@ -17,8 +17,16 @@
             flex-grow: 0;
             text-align: center;
 
-            .title {
+            .title,
+            .description {
                 padding-bottom: 1vw;
+            }
+
+            .startBtn {
+                background-color: var(--blue);
+                border-radius: 18px;
+                padding: 2vw 4vw 1.6vw 4vw;
+                margin-top: 2vw;
             }
         }
 

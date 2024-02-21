@@ -88,7 +88,7 @@ export default function QuizBody() {
                     setShowCongrats(true)
                     setTimeout(() => {
                         router.push("/")
-                    }, 2000);
+                    }, 10000);
                 }, 2000);
                 setSubmitValue("");
             }
