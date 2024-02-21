@@ -1,42 +1,25 @@
 @import "../../../../styles/abstracts";
 
 .section {
-    padding-top: 4vw;
-    height: 100vh;
+    height: calc(100vh - 8vw);
 
     .sectionContainer {
         height: 100%;
+        display: flex;
+        justify-content: center;
 
         .questionContainer {
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 4vw;
-            height: 100%;
-
-            .question {}
-
-
-            .questionInput {
-                width: 100%;
-
-                input {
-                    width: 100%;
-                    background: transparent;
-                    outline: none;
-                    padding: 2vw;
-                    min-height: 8vw;
-                    border: 0.05vw solid rgba(255, 255, 255, 0.245);
-                    color: var(--white);
-                    font-size: 4vw;
-                    border-radius: 1vw;
-                }
-            }
+            gap: 8%;
+            width: 100%;
 
             .questionImg {
                 width: 100%;
-                height: 40vw;
+                height: 50%;
 
                 img {
                     width: 100%;
@@ -45,15 +28,58 @@
                 }
             }
 
-            .questionSubmit {
-                width: 100%;
-                text-align: center;
-                padding: 2vw;
-                padding-top: 3vw;
-                cursor: pointer;
-                background-color: var(--blue);
-                font-size: 4vw;
-                border-radius: 1vw;
+            .question {}
+
+
+            .fieldsContainer {
+                position: relative;
+                width: 50%;
+                min-height: 12%;
+                padding: 1.3%;
+                display: flex;
+                justify-content: flex-end;
+
+
+                .questionInput {
+                    position: absolute;
+                    z-index: 1;
+                    top: 0;
+                    inset-inline-start: 0;
+                    width: 100%;
+                    height: 100%;
+
+
+
+                    input {
+                        width: 100%;
+                        height: 100%;
+                        background: transparent;
+                        outline: none;
+                        padding: 2%;
+                        border: 0.05vw solid rgba(255, 255, 255, 0.245);
+                        color: var(--white);
+                        font-size: var(--body1-size);
+                        border-radius: 1vw;
+                    }
+                }
+
+                .questionSubmit {
+                    position: relative;
+                    z-index: 3;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1vw;
+                    height: 100%;
+                    cursor: pointer;
+                    background-color: var(--blue);
+                    border-radius: 0.5vw;
+
+                    svg {
+                        width: 2vw;
+                    }
+                }
             }
         }
     }
@@ -62,11 +88,30 @@
 .successPopup,
 .failsPopup {
     position: fixed;
+    z-index: 10;
     top: 0;
     inset-inline-start: 0;
+    background-color: rgba(0, 0, 0, 0.9);
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .popupContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 2vw;
+
+        .tryAgainBtn {
+            background-color: var(--blue);
+            border-radius: 0.5vw;
+            padding: 2vw 6vw;
+        }
+    }
+
 }

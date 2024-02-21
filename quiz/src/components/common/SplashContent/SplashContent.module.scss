@@ -1,0 +1,39 @@
+@import "../../../../styles/abstracts";
+
+.section {
+    height: calc(100vh - 8vw);
+    overflow: hidden;
+    padding-top: 5vw;
+
+    .sectionContainer {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2vw;
+
+        .info {
+            flex-grow: 0;
+            text-align: center;
+
+            .title {
+                padding-bottom: 1vw;
+            }
+        }
+
+        .bg {
+            flex: 1;
+            width: 100%;
+            height: 80%;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: bottom;
+            }
+        }
+    }
+
+}

@@ -15,25 +15,28 @@
 
 
 
-    --h1-size: 9.25vw; // 100px
-    --h2-size: 7.77vw; //! 84px 
-    --h3-size: 6.48vw; // 70px
+    --h1-size: 5.78vw; // 100px /
+    --h2-size: 4.85vw; //! 84px 
+    --h3-size: 4.04vw; // 70px
+    --h4-size: 3.75vw; // 65px
+    --h5-size: 2.4vw; // 48px
+    --h6-size: 2.08vw; // 36px
 
-    --subTitle1-size: 6.01vw; // 65px
-    --subTitle2-size: 3.70vw; //40px
-    --subTitle3-size: 3.33vw; // !36px
+    --subTitle1-size: 3.75vw; // 65px
+    --subTitle2-size: 2.31vw; //40px
+    --subTitle3-size: 2.08vw; // !36px
 
 
-    --body1-size: 2.96vw; // !32px
-    --body2-size: 2.22vw; // !24px
-    --body3-size: 1.66vw; // !18px
+    --body1-size: 1.84vw; // !32px
+    --body2-size: 1.38vw; // !24px
+    --body3-size: 1.04vw; // !18px
 
-    --caption1-size: 1.29vw; //!14px
+    --caption1-size: 0.80vw; //!14px
 
-    --digital1-size: 38.88vw; //! 420px
-    --digital2-size: 15.74vw; //! 170px
-    --digital3-size: 8.33vw; //! 90px
-    --digital4-size: 5.18vw; //! 56px
+    --digital1-size: 24.27vw; //! 420px
+    --digital2-size: 9.82vw; //! 170px
+    --digital3-size: 5.20vw; //! 90px
+    --digital4-size: 5.23vw; //! 56px
 
     @include medium-screen {}
 
