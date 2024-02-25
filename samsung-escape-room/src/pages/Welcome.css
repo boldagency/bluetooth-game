@@ -1,0 +1,22 @@
+ion-content {
+    --padding-top: 10vw;
+}
+
+
+
+.content {
+    padding: 50px !important;
+}
+
+ion-text {
+    padding-top: 15%;
+    padding-bottom: 25%;
+}
+
+ion-button {
+    --border-radius :10px;
+    --padding-top: 2vw;
+    --padding-bottom: 2vw;
+    --padding-start: 6vw;
+    --padding-end: 6vw;
+}
