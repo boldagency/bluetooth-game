@@ -19,8 +19,8 @@ const Welcome: React.FC = () => {
           </IonCol>
         </IonRow>
         <IonRow className="ion-align-items-center ion-justify-content-center">
-          <IonCol className="logo ion-align-items-center ion-justify-content-center">
-            <IonButton color='primary' href='/register'>Next</IonButton>
+          <IonCol className="ion-align-items-center ion-justify-content-center">
+            <IonButton color='primary' href='/register' expand="block">Next</IonButton>
           </IonCol>
         </IonRow>
         <div className='bg'>

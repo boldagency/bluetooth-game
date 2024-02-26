@@ -28,7 +28,8 @@ const quest = {
         question: "Question Question Question",
         answer: "answer"
       }
-    ]
+    ],
+    passcode :"1924Y"
   },
   'korean-alley': {
     questions: [
@@ -44,7 +45,8 @@ const quest = {
         question: "Question Question Question",
         answer: "answer"
       }
-    ]
+    ],
+    passcode :"0124Y"
   }
 }
 
@@ -67,6 +69,7 @@ const instructionCards = [
   }
 ]
 const Room: React.FC = () => {
+  const [roomsPlayed, setRoomsPlayed] = useState([]);
   const [gameState, setGameState] = useState(state.select);
   const [selectedRoom, selectRoom] = useState(undefined);
   const [activeQuestion, setActiveQuestion] = useState(0);
@@ -101,7 +104,13 @@ const Room: React.FC = () => {
         e.target.reset();
       } else {
         stopTimer();
-        setGameState(state.code)
+        setRoomsPlayed(t => [...t, selectedRoom]);
+        setGameState(state.code);
+        // if (roomsPlayed.length === 2) {
+
+        // } else {
+        //   setGameState(state.code)
+        // }
       }
     } else {
       setWrongAnswer(true)
@@ -135,12 +144,12 @@ const Room: React.FC = () => {
             </IonRow>
             <IonRow className="ion-align-items-center ion-justify-content-center  ion-margin-top">
               <IonCol className="logo ion-align-items-center ion-justify-content-center">
-                <IonButton color='primary' fill='outline' onClick={() => { selectRoom('classroom'); setGameState(state.instructions) }} size='large' expand='block'>Escape from Class Room</IonButton>
+                <IonButton disabled={roomsPlayed.includes('classroom')} color='primary' fill='outline' onClick={() => { selectRoom('classroom'); setGameState(state.instructions) }} size='large' expand='block'>Escape from Class Room</IonButton>
               </IonCol>
             </IonRow>
             <IonRow className="ion-align-items-center ion-justify-content-center  ion-margin-top">
               <IonCol className="logo ion-align-items-center ion-justify-content-center">
-                <IonButton color='primary' fill='outline' onClick={() => { selectRoom('korean-alley'); setGameState(state.instructions) }} size='large' expand='block'>Escape from Korean Alley</IonButton>
+                <IonButton disabled={roomsPlayed.includes('korean-alley')} color='primary' fill='outline' onClick={() => { selectRoom('korean-alley'); setGameState(state.instructions) }} size='large' expand='block'>Escape from Korean Alley</IonButton>
               </IonCol>
             </IonRow>
           </>
@@ -208,7 +217,7 @@ const Room: React.FC = () => {
                       className='ion-margin-top ion-margin-bottom'
                       icon={trophy} color='dark' size='large'></IonIcon>
                     <h2>Use the code below to escape</h2>
-                    <h1>0000</h1>
+                    <h1>{quest[selectedRoom].passcode}</h1>
                   </IonCardContent>
                 </IonCard>
               </IonCol>

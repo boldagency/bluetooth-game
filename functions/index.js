@@ -14,6 +14,7 @@ const app = express();
 app.use(cors({ origin: true }));
 
 let race = db.collection('race');
+let escapeRoom = db.collection('escape-room-scores');
 
 function isNull(x) {
     return Object.is(x, null);
@@ -250,5 +251,75 @@ app.post("/time-up", async (req, res) => {
     }
 });
 /* -----  END TO BE CALLED TO GET WINNER  -----------*/
+
+
+
+// API TO REGISTER ESCAPE ROOM SCORE
+app.post("/register-scores-classroom", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    try {
+        const body = req.body;
+        const writeResult = await escapeRoom.add({
+            name: body["name"],
+            id: body["id"],
+            mobile: body["mobile"],
+            scoreClassroom: 0,
+            scoreKorean: 0
+        });
+
+        const snapshot = (await writeResult.get()).data();
+        res.json({
+            success: true,
+            data: snapshot
+        });
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
+app.post("/update-scores-classroom", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    try {
+        const body = req.body;
+        const writeResult = await escapeRoom.where('id','==',body["id"]).get().ref.update({
+            scoreClassroom: body["score"]
+        });
+
+        const leaders  = escapeRoom.where('scoreClassroom', '>',0).orderBy('scoreClassroom','asc').select('name','scoreClassroom').limit(20).get()
+
+        res.json({
+            success: true,
+            leaderboard: leaders
+        });
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
+app.post("/update-scores-korean", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    try {
+        const body = req.body;
+        const writeResult = await escapeRoom.where('id','==',body["id"]).get().ref.update({
+            scoreKorean: body["score"]
+        });
+
+        const leaders  = escapeRoom.where('scoreKorean', '>',0).orderBy('scoreKorean','asc').select('name','scoreKorean').limit(20).get()
+
+        res.json({
+            success: true,
+            leaderboard: leaders
+        });
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
 exports.app = functions.https.onRequest(app);
 
