@@ -20,3 +20,16 @@ ion-button {
     --padding-start: 6vw;
     --padding-end: 6vw;
 }
+
+.bg {
+    position: absolute;
+    bottom: 0;
+    height: 50vh;
+    width: 100%;
+}
+.bg ion-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+}

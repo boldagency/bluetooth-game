@@ -1,20 +1,20 @@
 import { IonButton, IonCol, IonContent, IonInput, IonItem, IonLabel, IonPage, IonRow, IonText, useIonRouter } from '@ionic/react';
 import './Register.css';
 import SamsungHeader from '../components/SamsungHeader';
-import { useState } from 'react';
+import { useRef } from 'react';
 
 const Register: React.FC = () => {
   const registerUser = (e:any) => {
     e.preventDefault();
-    if (name && name !== '' && mobile && mobile !== '' && id && id !== '') {
+    if (name?.current.value !== '' && mobile?.current.value !== '' && id?.current.value !== '') {
       router.push('/room')
     } else {
       console.log("err",name,mobile,id)
     }
   }
-  const [name, setName] = useState(undefined);
-  const [mobile, setMobile] = useState(undefined);
-  const [id, setId] = useState(undefined);
+  const name = useRef(undefined);
+  const mobile = useRef(undefined);
+  const id = useRef(undefined);
   const router = useIonRouter();
   return (
     <IonPage>
@@ -32,16 +32,16 @@ const Register: React.FC = () => {
         </IonRow>
         <form className="ion-padding" onSubmit={registerUser}>
           <IonItem className='ion-margin-bottom'>
-            <IonLabel position="floating">Name</IonLabel>
-            <IonInput required type='text' onIonChange={(e) => setName(e?.target?.value)} />
+            <IonLabel position="stacked">Name</IonLabel>
+            <IonInput fill="outline" required type='text' ref={name} />
           </IonItem>
           <IonItem className='ion-margin-bottom'>
-            <IonLabel position="floating">Mobile Number</IonLabel>
-            <IonInput required type="tel" onIonChange={(e) => setMobile(e?.target?.value)}/>
+            <IonLabel position="stacked">Mobile Number</IonLabel>
+            <IonInput fill="outline" required type="tel" ref={mobile}/>
           </IonItem>
           <IonItem className='ion-margin-bottom'>
-            <IonLabel position="floating">ID Number</IonLabel>
-            <IonInput required type="text" onIonChange={(e) => setId(e?.target?.value)}/>
+            <IonLabel position="stacked">ID Number</IonLabel>
+            <IonInput fill="outline" required type="text" ref={id}/>
           </IonItem>
           <IonButton className="ion-margin-top" type="submit" expand="block">
             Register

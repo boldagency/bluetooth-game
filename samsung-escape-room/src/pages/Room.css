@@ -12,7 +12,28 @@ ion-text {
     padding-top: 15%;
     padding-bottom: 25%;
 }
+ion-text.question {
+    padding-bottom: 5%;
+}
+ion-text.error {
+    padding-bottom: 2vw;
+    padding-top: 2vw;
+}
+
+form {
+    width: 100%;
+}
+
+ion-icon {
+    font-size: 6rem !important;
+    width: 6rem !important;
+    height: 6rem !important;
+}
 
 ion-button {
     --border-radius :10px;
+}
+
+.code-card h1 {
+    font-weight: 500;
 }

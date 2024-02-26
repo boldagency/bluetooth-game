@@ -23,6 +23,9 @@ const Welcome: React.FC = () => {
             <IonButton color='primary' href='/register'>Next</IonButton>
           </IonCol>
         </IonRow>
+        <div className='bg'>
+        <IonImg src="/splash.png" className='img'></IonImg>
+        </div>
       </IonContent>
     </IonPage>
   );

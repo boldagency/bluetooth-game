@@ -5,5 +5,13 @@
 }
 
 .logo ion-img {
-  width: 50%;
+  width: 22.4vw;
+}
+
+.title h2 {
+  font-weight: 600;
+}
+
+.title {
+  margin-bottom: 12vw;
 }
