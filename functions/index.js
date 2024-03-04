@@ -264,10 +264,12 @@ app.post("/register-scores-classroom", async (req, res) => {
             id: body["id"],
             mobile: body["mobile"],
             scoreClassroom: 0,
-            scoreKorean: 0
+            scoreKorean: 0,
+            playedBoth: false,
+            totalScore: 0
         });
 
-        const snapshot = (await writeResult.get()).data();
+        const snapshot = (await writeResult.get()).id;
         res.json({
             success: true,
             data: snapshot
@@ -283,12 +285,22 @@ app.post("/update-scores-classroom", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
         const body = req.body;
-        const writeResult = await escapeRoom.where('id','==',body["id"]).get().ref.update({
+        const record = (await escapeRoom.doc(body["id"]).get()).data();
+        let dataToStore = {
             scoreClassroom: body["score"]
-        });
+        }
+        if (record.scoreKorean > 0) {
+            dataToStore.playedBoth = true;
+            dataToStore.totalScore = record.scoreKorean + body["score"]
+        }
+        const writeResult = await escapeRoom.doc(body["id"]).update(dataToStore);
 
-        const leaders  = escapeRoom.where('scoreClassroom', '>',0).orderBy('scoreClassroom','asc').select('name','scoreClassroom').limit(20).get()
-
+        const query = await escapeRoom
+            .where('totalScore', '>', 0)
+            .orderBy('totalScore', 'asc')
+            .select('name', 'id', 'totalScore')
+            .limit(20).get()
+        const leaders = query.docs.map(d => { return d.data() });
         res.json({
             success: true,
             leaderboard: leaders
@@ -304,15 +316,21 @@ app.post("/update-scores-korean", async (req, res) => {
     res.set("Access-Control-Allow-Origin", "*");
     try {
         const body = req.body;
-        const writeResult = await escapeRoom.where('id','==',body["id"]).get().ref.update({
+        const record = (await escapeRoom.doc(body["id"]).get()).data();
+        let dataToStore = {
             scoreKorean: body["score"]
-        });
+        }
+        if (record.scoreClassroom > 0) {
+            dataToStore.playedBoth = true;
+            dataToStore.totalScore = record.scoreClassroom + body["score"]
+        }
+        const writeResult = await escapeRoom.doc(body["id"]).update(dataToStore);
 
-        const leaders  = escapeRoom.where('scoreKorean', '>',0).orderBy('scoreKorean','asc').select('name','scoreKorean').limit(20).get()
-
+        const query = await escapeRoom.orderBy('totalScore', 'asc').select('name', 'id', 'totalScore').limit(20).get()
+        const leaders = query.docs?.map(d => { return d.data() });
         res.json({
             success: true,
-            leaderboard: leaders
+            leaderboard: leaders ?? []
         });
     }
     catch (error) {
