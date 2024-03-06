@@ -4,6 +4,8 @@ const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
 const admin = require("firebase-admin");
+const dummy = require('./dummy.json');
+
 // import { generateUsername } from "unique-username-generator";
 const serviceAccount = require("./serviceAccount/serviceAccountKey.json");
 admin.initializeApp({
@@ -338,6 +340,106 @@ app.post("/update-scores-korean", async (req, res) => {
         return res.status(500).send(error);
     }
 });
+
+app.get("/leaderboard", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    try {
+
+        const query = await escapeRoom.where('totalScore', '>', 0)
+            .orderBy('totalScore', 'asc')
+            .select('name', 'id', 'mobile', 'totalScore')
+            .limit(40).get()
+        const leaders = query.docs?.map(d => {
+            const r = d.data();
+            // Calculate total seconds
+            const totalSeconds = Math.floor(r.totalScore / 1000);
+
+            // Calculate minutes and seconds
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+
+            // Format the time string
+            const formattedMinutes = String(minutes).padStart(2, '0');
+            const formattedSeconds = String(seconds).padStart(2, '0');
+
+            return {
+                ...r,
+                time: `${formattedMinutes}:${formattedSeconds}`
+            };
+        });
+        res.json(leaders ?? []);
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
+app.get("/escape-raw", async (req, res) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    try {
+
+        const query = await escapeRoom
+            .orderBy('totalScore', 'asc')
+            .get()
+        const leaders = query.docs?.map(d => {
+            const r = d.data();
+            // Calculate total seconds
+            const totalSeconds = Math.floor(r.totalScore / 1000);
+
+            // Calculate minutes and seconds
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+
+            // Format the time string
+            const formattedMinutes = String(minutes).padStart(2, '0');
+            const formattedSeconds = String(seconds).padStart(2, '0');
+
+            return {
+                ...r,
+                time: `${formattedMinutes}:${formattedSeconds}`
+            };
+        });
+        res.json(leaders ?? []);
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).send(error);
+    }
+});
+
+// app.post("/dummy", async (req, res) => {
+//     res.set("Access-Control-Allow-Origin", "*");
+//     try {
+
+
+//         const timeStringToMilliseconds = (timeString) => {
+//             const [minutes, seconds] = timeString.split(':').map(Number);
+//             const totalMilliseconds = minutes * 60 * 1000 + seconds * 1000;
+//             return totalMilliseconds;
+//         }
+
+//         await Promise.all[
+//             dummy.map((rec => {
+//                 escapeRoom.add({
+//                     name: rec.NAME,
+//                     id: rec.ID,
+//                     mobile: rec.MOBILE,
+//                     scoreClassroom: 0,
+//                     scoreKorean: 0,
+//                     df: true,
+//                     playedBoth: rec['PLAYED BOTH ROOMS'],
+//                     totalScore: timeStringToMilliseconds(rec.TIME)
+//                 })
+//             }))
+//         ]
+//         res.json({success: true});
+//     }
+//     catch (error) {
+//         console.log(error);
+//         return res.status(500).send(error);
+//     }
+// });
 
 exports.app = functions.https.onRequest(app);
 

@@ -35,6 +35,15 @@
           "destination": "/quiz.html"
         }
       ]
+    },
+    {
+      "public": "escape-leaderboard/out",
+      "site": "escape-leaderboard",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ]
     }
   ]
 }
